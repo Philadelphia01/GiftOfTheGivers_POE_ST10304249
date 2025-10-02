@@ -1,0 +1,101 @@
+# Simplified Azure DevOps Pipeline for Assignment Submission
+# This version focuses on build and test without deployment complexity
+
+trigger:
+  branches:
+    include:
+    - main
+    - develop
+    - feature/*
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  buildConfiguration: 'Release'
+  dotNetVersion: '8.0.x'
+  projectPath: 'DisasterAlleviationFoundation.csproj'
+
+stages:
+- stage: Build
+  displayName: 'Build and Test Stage'
+  jobs:
+  - job: BuildAndTest
+    displayName: 'Build and Test Job'
+    steps:
+    
+    # Install .NET SDK
+    - task: UseDotNet@2
+      displayName: 'Install .NET 8.0 SDK'
+      inputs:
+        packageType: 'sdk'
+        version: $(dotNetVersion)
+
+    # Display .NET version
+    - script: dotnet --version
+      displayName: 'Display .NET Version'
+
+    # Restore packages
+    - task: DotNetCoreCLI@2
+      displayName: 'Restore NuGet Packages'
+      inputs:
+        command: 'restore'
+        projects: '$(projectPath)'
+
+    # Build application
+    - task: DotNetCoreCLI@2
+      displayName: 'Build Application'
+      inputs:
+        command: 'build'
+        projects: '$(projectPath)'
+        arguments: '--configuration $(buildConfiguration) --no-restore'
+
+    # Run tests (will skip if no test projects found)
+    - task: DotNetCoreCLI@2
+      displayName: 'Run Tests'
+      inputs:
+        command: 'test'
+        projects: '**/*Tests.csproj'
+        arguments: '--configuration $(buildConfiguration) --no-build --logger trx --collect:"XPlat Code Coverage"'
+      continueOnError: true
+
+    # Publish application
+    - task: DotNetCoreCLI@2
+      displayName: 'Publish Application'
+      inputs:
+        command: 'publish'
+        projects: '$(projectPath)'
+        arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory) --no-build'
+        zipAfterPublish: true
+
+    # Publish build artifacts
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Build Artifacts'
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'DisasterAlleviationFoundation-$(Build.BuildNumber)'
+        publishLocation: 'Container'
+
+    # Display build summary
+    - script: |
+        echo "Build completed successfully!"
+        echo "Build Number: $(Build.BuildNumber)"
+        echo "Build ID: $(Build.BuildId)"
+        echo "Source Branch: $(Build.SourceBranch)"
+        echo "Artifacts published to: DisasterAlleviationFoundation-$(Build.BuildNumber)"
+      displayName: 'Build Summary'
+
+# Optional: Code Quality Analysis (can be added later)
+- stage: CodeQuality
+  displayName: 'Code Quality Analysis'
+  dependsOn: Build
+  condition: succeeded()
+  jobs:
+  - job: Analysis
+    displayName: 'Static Code Analysis'
+    steps:
+    - script: |
+        echo "Code quality analysis would run here"
+        echo "Tools like SonarQube, CodeQL, or other analyzers"
+        echo "This stage demonstrates pipeline extensibility"
+      displayName: 'Placeholder for Code Analysis'

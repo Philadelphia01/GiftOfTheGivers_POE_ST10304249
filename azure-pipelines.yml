@@ -1,0 +1,174 @@
+# Azure DevOps Pipeline for Disaster Alleviation Foundation
+# ASP.NET Core (.NET 8.0) Build and Deploy Pipeline
+
+trigger:
+  branches:
+    include:
+    - main
+    - develop
+    - feature/*
+  paths:
+    exclude:
+    - README.md
+    - docs/*
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  buildConfiguration: 'Release'
+  dotNetFramework: 'net8.0'
+  dotNetVersion: '8.0.x'
+  projectPath: 'DisasterAlleviationFoundation/DisasterAlleviationFoundation.csproj'
+  
+stages:
+- stage: Build
+  displayName: 'Build Stage'
+  jobs:
+  - job: Build
+    displayName: 'Build Job'
+    steps:
+    
+    # Install .NET SDK
+    - task: UseDotNet@2
+      displayName: 'Install .NET SDK'
+      inputs:
+        packageType: 'sdk'
+        version: $(dotNetVersion)
+        installationPath: $(Agent.ToolsDirectory)/dotnet
+
+    # Restore NuGet packages
+    - task: DotNetCoreCLI@2
+      displayName: 'Restore NuGet Packages'
+      inputs:
+        command: 'restore'
+        projects: '$(projectPath)'
+        feedsToUse: 'select'
+
+    # Build the application
+    - task: DotNetCoreCLI@2
+      displayName: 'Build Application'
+      inputs:
+        command: 'build'
+        projects: '$(projectPath)'
+        arguments: '--configuration $(buildConfiguration) --no-restore'
+
+    # Run unit tests (if any exist)
+    - task: DotNetCoreCLI@2
+      displayName: 'Run Unit Tests'
+      inputs:
+        command: 'test'
+        projects: '**/*Tests.csproj'
+        arguments: '--configuration $(buildConfiguration) --no-build --collect:"XPlat Code Coverage"'
+      continueOnError: true
+
+    # Publish application
+    - task: DotNetCoreCLI@2
+      displayName: 'Publish Application'
+      inputs:
+        command: 'publish'
+        projects: '$(projectPath)'
+        arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory) --no-build'
+        zipAfterPublish: true
+        modifyOutputPath: false
+
+    # Copy database migration scripts
+    - task: CopyFiles@2
+      displayName: 'Copy Migration Scripts'
+      inputs:
+        SourceFolder: 'DisasterAlleviationFoundation/Migrations'
+        Contents: '**'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)/Migrations'
+
+    # Publish build artifacts
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Build Artifacts'
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
+
+- stage: DeployToTest
+  displayName: 'Deploy to Test Environment'
+  dependsOn: Build
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/develop'))
+  jobs:
+  - deployment: DeployTest
+    displayName: 'Deploy to Test'
+    environment: 'DisasterAlleviationFoundation-Test'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - download: current
+            artifact: drop
+            
+          # Deploy to Azure App Service (Test)
+          - task: AzureWebApp@1
+            displayName: 'Deploy to Test App Service'
+            inputs:
+              azureSubscription: 'Azure-ServiceConnection' # Update with your service connection name
+              appType: 'webApp'
+              appName: 'disaster-alleviation-test' # Update with your test app service name
+              package: '$(Pipeline.Workspace)/drop/*.zip'
+              deploymentMethod: 'auto'
+
+- stage: DeployToProduction
+  displayName: 'Deploy to Production Environment'
+  dependsOn: DeployToTest
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+  jobs:
+  - deployment: DeployProduction
+    displayName: 'Deploy to Production'
+    environment: 'DisasterAlleviationFoundation-Production'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - download: current
+            artifact: drop
+            
+          # Deploy to Azure App Service (Production)
+          - task: AzureWebApp@1
+            displayName: 'Deploy to Production App Service'
+            inputs:
+              azureSubscription: 'Azure-ServiceConnection' # Update with your service connection name
+              appType: 'webApp'
+              appName: 'disaster-alleviation-prod' # Update with your production app service name
+              package: '$(Pipeline.Workspace)/drop/*.zip'
+              deploymentMethod: 'auto'
+
+# Additional pipeline features
+- stage: CodeQuality
+  displayName: 'Code Quality Analysis'
+  dependsOn: Build
+  condition: succeeded()
+  jobs:
+  - job: SonarQube
+    displayName: 'SonarQube Analysis'
+    steps:
+    - task: SonarQubePrepare@4
+      displayName: 'Prepare SonarQube Analysis'
+      inputs:
+        SonarQube: 'SonarQube-ServiceConnection' # Update with your SonarQube connection
+        scannerMode: 'MSBuild'
+        projectKey: 'DisasterAlleviationFoundation'
+        projectName: 'Disaster Alleviation Foundation'
+      continueOnError: true
+
+    - task: DotNetCoreCLI@2
+      displayName: 'Build for SonarQube'
+      inputs:
+        command: 'build'
+        projects: '$(projectPath)'
+      continueOnError: true
+
+    - task: SonarQubeAnalyze@4
+      displayName: 'Run SonarQube Analysis'
+      continueOnError: true
+
+    - task: SonarQubePublish@4
+      displayName: 'Publish SonarQube Results'
+      inputs:
+        pollingTimeoutSec: '300'
+      continueOnError: true
