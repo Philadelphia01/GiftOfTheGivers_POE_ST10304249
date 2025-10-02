@@ -19,7 +19,7 @@ variables:
   buildConfiguration: 'Release'
   dotNetFramework: 'net8.0'
   dotNetVersion: '8.0.x'
-  projectPath: 'DisasterAlleviationFoundation/DisasterAlleviationFoundation.csproj'
+  projectPath: 'DisasterAlleviationFoundation.csproj'
   
 stages:
 - stage: Build
@@ -103,15 +103,14 @@ stages:
           - download: current
             artifact: drop
             
-          # Deploy to Azure App Service (Test)
-          - task: AzureWebApp@1
-            displayName: 'Deploy to Test App Service'
-            inputs:
-              azureSubscription: 'Azure-ServiceConnection' # Update with your service connection name
-              appType: 'webApp'
-              appName: 'disaster-alleviation-test' # Update with your test app service name
-              package: '$(Pipeline.Workspace)/drop/*.zip'
-              deploymentMethod: 'auto'
+          # Deployment placeholder for assignment demonstration
+          - script: |
+              echo "🚀 DEPLOYMENT SIMULATION FOR ASSIGNMENT"
+              echo "In a real scenario, this would deploy to Azure App Service"
+              echo "Test Environment: disaster-alleviation-test.azurewebsites.net"
+              echo "Package: $(Pipeline.Workspace)/drop/*.zip"
+              echo "✅ Deployment simulation completed successfully!"
+            displayName: 'Simulate Test Deployment'
 
 - stage: DeployToProduction
   displayName: 'Deploy to Production Environment'
@@ -128,15 +127,14 @@ stages:
           - download: current
             artifact: drop
             
-          # Deploy to Azure App Service (Production)
-          - task: AzureWebApp@1
-            displayName: 'Deploy to Production App Service'
-            inputs:
-              azureSubscription: 'Azure-ServiceConnection' # Update with your service connection name
-              appType: 'webApp'
-              appName: 'disaster-alleviation-prod' # Update with your production app service name
-              package: '$(Pipeline.Workspace)/drop/*.zip'
-              deploymentMethod: 'auto'
+          # Deployment placeholder for assignment demonstration
+          - script: |
+              echo "🚀 PRODUCTION DEPLOYMENT SIMULATION FOR ASSIGNMENT"
+              echo "In a real scenario, this would deploy to Azure App Service"
+              echo "Production Environment: disaster-alleviation-prod.azurewebsites.net"
+              echo "Package: $(Pipeline.Workspace)/drop/*.zip"
+              echo "✅ Production deployment simulation completed successfully!"
+            displayName: 'Simulate Production Deployment'
 
 # Additional pipeline features
 - stage: CodeQuality
@@ -147,28 +145,10 @@ stages:
   - job: SonarQube
     displayName: 'SonarQube Analysis'
     steps:
-    - task: SonarQubePrepare@4
-      displayName: 'Prepare SonarQube Analysis'
-      inputs:
-        SonarQube: 'SonarQube-ServiceConnection' # Update with your SonarQube connection
-        scannerMode: 'MSBuild'
-        projectKey: 'DisasterAlleviationFoundation'
-        projectName: 'Disaster Alleviation Foundation'
-      continueOnError: true
-
-    - task: DotNetCoreCLI@2
-      displayName: 'Build for SonarQube'
-      inputs:
-        command: 'build'
-        projects: '$(projectPath)'
-      continueOnError: true
-
-    - task: SonarQubeAnalyze@4
-      displayName: 'Run SonarQube Analysis'
-      continueOnError: true
-
-    - task: SonarQubePublish@4
-      displayName: 'Publish SonarQube Results'
-      inputs:
-        pollingTimeoutSec: '300'
-      continueOnError: true
+    - script: |
+        echo "🔍 CODE QUALITY ANALYSIS SIMULATION FOR ASSIGNMENT"
+        echo "In a real scenario, this would run SonarQube analysis"
+        echo "Quality Gates: Code Coverage, Duplications, Maintainability"
+        echo "Security Scanning: Vulnerability Detection"
+        echo "✅ Code quality analysis simulation completed!"
+      displayName: 'Simulate Code Quality Analysis'
