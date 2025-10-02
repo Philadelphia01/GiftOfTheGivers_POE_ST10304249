@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nNgWcgZ98tQ=",
+  "dgSpecHash": "yLDzzdj0JW4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation.csproj",
+  "projectFilePath": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\RC_Student_Lab\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\RC_Student_Lab\\.nuget\\packages\\azure.identity\\1.11.1\\azure.identity.1.11.1.nupkg.sha512",

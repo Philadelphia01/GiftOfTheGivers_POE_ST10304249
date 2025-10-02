@@ -1,12 +1,422 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\azure-pipelines-simple.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:azure-pipelines-simple.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\volunteer\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DisasterAlleviationFoundation\\views\\volunteer\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DisasterAlleviationFoundation\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\Areas\\Identity\\Pages\\Account\\Register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DisasterAlleviationFoundation\\Areas\\Identity\\Pages\\Account\\Register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DisasterAlleviationFoundation\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\Areas\\Identity\\Pages\\Account\\Login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DisasterAlleviationFoundation\\Areas\\Identity\\Pages\\Account\\Login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DisasterAlleviationFoundation\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\pages\\page.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DisasterAlleviationFoundation\\views\\pages\\page.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DisasterAlleviationFoundation\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DisasterAlleviationFoundation\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\testauth\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DisasterAlleviationFoundation\\views\\testauth\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\test\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DisasterAlleviationFoundation\\views\\test\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\shared\\_LoginPartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DisasterAlleviationFoundation\\views\\shared\\_LoginPartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\shared\\_validationScriptsPartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DisasterAlleviationFoundation\\views\\shared\\_validationScriptsPartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DisasterAlleviationFoundation\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DisasterAlleviationFoundation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\controllers\\volunteercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DisasterAlleviationFoundation\\controllers\\volunteercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\controllers\\programscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DisasterAlleviationFoundation\\controllers\\programscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\controllers\\pagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DisasterAlleviationFoundation\\controllers\\pagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DisasterAlleviationFoundation\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\programs\\healthcare.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DisasterAlleviationFoundation\\views\\programs\\healthcare.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\programs\\education.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DisasterAlleviationFoundation\\views\\programs\\education.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\donation\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DisasterAlleviationFoundation\\views\\donation\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\volunteer\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DisasterAlleviationFoundation\\views\\volunteer\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DisasterAlleviationFoundation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "azure-pipelines-simple.yml",
+              "DocumentMoniker": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\azure-pipelines-simple.yml",
+              "RelativeDocumentMoniker": "azure-pipelines-simple.yml",
+              "ToolTip": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\azure-pipelines-simple.yml",
+              "RelativeToolTip": "azure-pipelines-simple.yml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-10-02T11:17:03.022Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Register.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "RelativeDocumentMoniker": "DisasterAlleviationFoundation\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "ToolTip": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "RelativeToolTip": "DisasterAlleviationFoundation\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-29T10:18:26.595Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "DisasterAlleviationFoundation\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ToolTip": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeToolTip": "DisasterAlleviationFoundation\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-29T10:18:16.171Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Login.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
+              "RelativeDocumentMoniker": "DisasterAlleviationFoundation\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
+              "ToolTip": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
+              "RelativeToolTip": "DisasterAlleviationFoundation\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-29T10:18:06.024Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "DisasterAlleviationFoundation\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "ToolTip": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "RelativeToolTip": "DisasterAlleviationFoundation\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-29T10:18:02.509Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "site.js",
+              "DocumentMoniker": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\wwwroot\\js\\site.js",
+              "RelativeDocumentMoniker": "DisasterAlleviationFoundation\\wwwroot\\js\\site.js",
+              "ToolTip": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\wwwroot\\js\\site.js",
+              "RelativeToolTip": "DisasterAlleviationFoundation\\wwwroot\\js\\site.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-09-29T10:11:53.818Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\volunteer\\edit.cshtml",
+              "RelativeDocumentMoniker": "DisasterAlleviationFoundation\\views\\volunteer\\edit.cshtml",
+              "ToolTip": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\volunteer\\edit.cshtml",
+              "RelativeToolTip": "DisasterAlleviationFoundation\\views\\volunteer\\edit.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-29T10:11:43.29Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "index.cshtml",
+              "DocumentMoniker": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\testauth\\index.cshtml",
+              "RelativeDocumentMoniker": "DisasterAlleviationFoundation\\views\\testauth\\index.cshtml",
+              "ToolTip": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\testauth\\index.cshtml",
+              "RelativeToolTip": "DisasterAlleviationFoundation\\views\\testauth\\index.cshtml",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-29T10:11:34.634Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "index.cshtml",
+              "DocumentMoniker": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\test\\index.cshtml",
+              "RelativeDocumentMoniker": "DisasterAlleviationFoundation\\views\\test\\index.cshtml",
+              "ToolTip": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\test\\index.cshtml",
+              "RelativeToolTip": "DisasterAlleviationFoundation\\views\\test\\index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-29T10:11:26.983Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "programscontroller.cs",
+              "DocumentMoniker": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\controllers\\programscontroller.cs",
+              "RelativeDocumentMoniker": "DisasterAlleviationFoundation\\controllers\\programscontroller.cs",
+              "ToolTip": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\controllers\\programscontroller.cs",
+              "RelativeToolTip": "DisasterAlleviationFoundation\\controllers\\programscontroller.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T13:38:32.458Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "pagescontroller.cs",
+              "DocumentMoniker": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\controllers\\pagescontroller.cs",
+              "RelativeDocumentMoniker": "DisasterAlleviationFoundation\\controllers\\pagescontroller.cs",
+              "ToolTip": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\controllers\\pagescontroller.cs",
+              "RelativeToolTip": "DisasterAlleviationFoundation\\controllers\\pagescontroller.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T13:38:26.654Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "index.cshtml",
+              "DocumentMoniker": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\home\\index.cshtml",
+              "RelativeDocumentMoniker": "DisasterAlleviationFoundation\\views\\home\\index.cshtml",
+              "ToolTip": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\home\\index.cshtml",
+              "RelativeToolTip": "DisasterAlleviationFoundation\\views\\home\\index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEwAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-22T10:10:18.539Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "page.cshtml",
+              "DocumentMoniker": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\pages\\page.cshtml",
+              "RelativeDocumentMoniker": "DisasterAlleviationFoundation\\views\\pages\\page.cshtml",
+              "ToolTip": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\pages\\page.cshtml",
+              "RelativeToolTip": "DisasterAlleviationFoundation\\views\\pages\\page.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-22T09:06:40.214Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "_layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\shared\\_layout.cshtml",
+              "RelativeDocumentMoniker": "DisasterAlleviationFoundation\\views\\shared\\_layout.cshtml",
+              "ToolTip": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\shared\\_layout.cshtml",
+              "RelativeToolTip": "DisasterAlleviationFoundation\\views\\shared\\_layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-19T13:53:55.3Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "applicationdbcontext.cs",
+              "DocumentMoniker": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\data\\applicationdbcontext.cs",
+              "RelativeDocumentMoniker": "DisasterAlleviationFoundation\\data\\applicationdbcontext.cs",
+              "ToolTip": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\data\\applicationdbcontext.cs",
+              "RelativeToolTip": "DisasterAlleviationFoundation\\data\\applicationdbcontext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T13:38:47.317Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "_validationScriptsPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\shared\\_validationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "DisasterAlleviationFoundation\\views\\shared\\_validationScriptsPartial.cshtml",
+              "ToolTip": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\shared\\_validationScriptsPartial.cshtml",
+              "RelativeToolTip": "DisasterAlleviationFoundation\\views\\shared\\_validationScriptsPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-22T09:06:19.183Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "_LoginPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\shared\\_LoginPartial.cshtml",
+              "RelativeDocumentMoniker": "DisasterAlleviationFoundation\\views\\shared\\_LoginPartial.cshtml",
+              "ToolTip": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\shared\\_LoginPartial.cshtml",
+              "RelativeToolTip": "DisasterAlleviationFoundation\\views\\shared\\_LoginPartial.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-22T09:06:03.927Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "volunteercontroller.cs",
+              "DocumentMoniker": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\controllers\\volunteercontroller.cs",
+              "RelativeDocumentMoniker": "DisasterAlleviationFoundation\\controllers\\volunteercontroller.cs",
+              "ToolTip": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\controllers\\volunteercontroller.cs",
+              "RelativeToolTip": "DisasterAlleviationFoundation\\controllers\\volunteercontroller.cs",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T13:38:35.092Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\appsettings.json",
+              "RelativeDocumentMoniker": "DisasterAlleviationFoundation\\appsettings.json",
+              "ToolTip": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\appsettings.json",
+              "RelativeToolTip": "DisasterAlleviationFoundation\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAABmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-23T11:28:51.568Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "healthcare.cshtml",
+              "DocumentMoniker": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\programs\\healthcare.cshtml",
+              "RelativeDocumentMoniker": "DisasterAlleviationFoundation\\views\\programs\\healthcare.cshtml",
+              "ToolTip": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\programs\\healthcare.cshtml",
+              "RelativeToolTip": "DisasterAlleviationFoundation\\views\\programs\\healthcare.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-22T08:37:45.156Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "education.cshtml",
+              "DocumentMoniker": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\programs\\education.cshtml",
+              "RelativeDocumentMoniker": "DisasterAlleviationFoundation\\views\\programs\\education.cshtml",
+              "ToolTip": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\programs\\education.cshtml",
+              "RelativeToolTip": "DisasterAlleviationFoundation\\views\\programs\\education.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-22T08:25:19.683Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "about.cshtml",
+              "DocumentMoniker": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\home\\about.cshtml",
+              "RelativeDocumentMoniker": "DisasterAlleviationFoundation\\views\\home\\about.cshtml",
+              "ToolTip": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\home\\about.cshtml",
+              "RelativeToolTip": "DisasterAlleviationFoundation\\views\\home\\about.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABIAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-19T13:53:31.283Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "create.cshtml",
+              "DocumentMoniker": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\donation\\create.cshtml",
+              "RelativeDocumentMoniker": "DisasterAlleviationFoundation\\views\\donation\\create.cshtml",
+              "ToolTip": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\donation\\create.cshtml",
+              "RelativeToolTip": "DisasterAlleviationFoundation\\views\\donation\\create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-19T13:53:22.958Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "details.cshtml",
+              "DocumentMoniker": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\volunteer\\details.cshtml",
+              "RelativeDocumentMoniker": "DisasterAlleviationFoundation\\views\\volunteer\\details.cshtml",
+              "ToolTip": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\views\\volunteer\\details.cshtml",
+              "RelativeToolTip": "DisasterAlleviationFoundation\\views\\volunteer\\details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-19T12:36:48.187Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "program.cs",
+              "DocumentMoniker": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\program.cs",
+              "RelativeDocumentMoniker": "DisasterAlleviationFoundation\\program.cs",
+              "ToolTip": "C:\\Users\\RC_Student_Lab\\Downloads\\DisasterAlleviationFoundation\\DisasterAlleviationFoundation\\program.cs",
+              "RelativeToolTip": "DisasterAlleviationFoundation\\program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-19T10:34:39.241Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

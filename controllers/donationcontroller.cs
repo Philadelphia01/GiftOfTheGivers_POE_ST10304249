@@ -51,9 +51,25 @@ namespace DisasterAlleviationFoundation.Controllers
             if (id == null)
                 return NotFound();
 
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
+            if (string.IsNullOrEmpty(userId))
+            {
+                TempData["ErrorMessage"] = "You must be logged in to view donation details.";
+                return RedirectToAction("SignIn", "Account");
+            }
+
             var donation = await _context.Donations.Include(d => d.DonorUser).FirstOrDefaultAsync(d => d.Id == id);
             if (donation == null)
                 return NotFound();
+
+            // Check if user can view this donation (owner or admin)
+            var isAdmin = User.IsInRole("Admin") || User.IsInRole("Administrator");
+            if (!isAdmin && donation.DonorUserId != userId)
+            {
+                TempData["ErrorMessage"] = "You can only view your own donations.";
+                return RedirectToAction(nameof(Index));
+            }
 
             return View(donation);
         }
