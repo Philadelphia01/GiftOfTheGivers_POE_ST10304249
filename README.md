@@ -192,11 +192,14 @@ dotnet build
 # Run with default settings
 dotnet run
 
-# Run on specific port
-dotnet run --urls http://localhost:5182
+# Run on specific port (recommended)
+dotnet run --urls http://localhost:5186
 
 # Run with hot reload
-dotnet watch run
+dotnet watch run --urls http://localhost:5186
+
+# Run with Development environment
+$env:ASPNETCORE_ENVIRONMENT="Development"; dotnet run --no-launch-profile --urls http://localhost:5186
 ```
 
 ### **Production Mode**
@@ -210,30 +213,77 @@ dotnet DisasterAlleviationFoundation.dll
 ```
 
 ### **Access the Application**
-- **Local Development**: `http://localhost:5182`
-- **HTTPS**: `https://localhost:7182` (with SSL certificate)
+- **Local Development**: `http://localhost:5186` (or your configured port)
+- **HTTPS**: `https://localhost:7186` (with SSL certificate)
+
+### **🚀 Quick Login Reference**
+| User Type | Email | Password | Access Level |
+|-----------|-------|----------|--------------|
+| **Admin** | `admin@disasterrelief.com` | `Admin123!` | Full system access + Admin Dashboard |
+| **Regular User** | *Your registered email* | *Your password* | Personal data only |
+
+**Admin Features**: Analytics dashboard, view all data, manage inventory, system oversight  
+**User Features**: Personal donations, reports, tasks, messaging (isolated data)
 
 ---
 
-## 👤 **User Accounts & Testing**
+## 👤 **User Accounts & Login Guide**
 
-### **Creating Test Accounts**
-1. Navigate to the registration page
-2. Create multiple user accounts for testing
-3. Test user isolation by logging in as different users
+### **🔐 How to Login as Admin**
+1. **Navigate to the Application**: Open `http://localhost:5186` in your browser
+2. **Click Login**: Click the "Login" button in the top navigation bar
+3. **Enter Admin Credentials**:
+   - **Email**: `admin@disasterrelief.com`
+   - **Password**: `Admin123!`
+4. **Automatic Redirection**: Upon successful login, you'll be automatically redirected to the **Admin Dashboard**
+5. **Admin Dashboard Features**:
+   - View system statistics (users, donations, reports, tasks)
+   - Access "View Incidents", "View Donations", "Manage Volunteers" buttons
+   - See recent activity feed
+   - Use "View Website" button to access the main site
 
-### **Testing User Isolation**
-1. **User A**: Create donations, tasks, and reports
-2. **User B**: Verify they cannot see User A's data
-3. **URL Testing**: Try accessing other users' data via URL manipulation
-4. **Admin Testing**: Test admin privileges (if configured)
+### **👥 How to Login as Regular User**
+1. **Navigate to the Application**: Open `http://localhost:5186` in your browser
+2. **Register New Account** (if you don't have one):
+   - Click "Register" in the top navigation
+   - Fill in your details:
+     - **Full Name**: Your full name
+     - **Email**: Your email address
+     - **Address**: Your physical address
+     - **Password**: Choose a secure password
+     - **Confirm Password**: Repeat your password
+   - Click "Register" to create your account
+3. **Login with Your Account**:
+   - Click "Login" in the top navigation
+   - Enter your email and password
+   - Click "Log in"
+4. **Regular User Features**:
+   - Create and manage your own donations
+   - Submit and view your disaster reports
+   - Manage your assigned volunteer tasks
+   - Send messages to other volunteers
+   - **Data Isolation**: You can only see and manage your own data
 
-### **Sample Test Data**
-```
-User 1: john.doe@example.com
-User 2: jane.smith@example.com
-Admin: admin@disasterrelief.com / Admin123!
-```
+### **🧪 Testing User Isolation**
+1. **Create Multiple Test Accounts**:
+   ```
+   User 1: john.doe@example.com / TestPass123!
+   User 2: jane.smith@example.com / TestPass123!
+   User 3: mike.wilson@example.com / TestPass123!
+   ```
+2. **Test Data Separation**:
+   - Login as **User 1**, create donations and reports
+   - Login as **User 2**, verify you cannot see User 1's data
+   - Try accessing other users' data via URL manipulation (should be blocked)
+3. **Admin Testing**:
+   - Login as **Admin**, verify you can see all users' data
+   - Test admin-only features like inventory management
+
+### **🎯 Login Troubleshooting**
+- **Forgot Admin Password**: The admin password is `Admin123!` (case-sensitive)
+- **Registration Issues**: Ensure all required fields are filled
+- **Login Failures**: Check email format and password requirements
+- **Account Locked**: Contact system administrator or check logs
 
 ### **Admin Account**
 A default admin account is automatically created when you first run the application:
