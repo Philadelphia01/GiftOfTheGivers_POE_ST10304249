@@ -270,7 +270,13 @@ dotnet DisasterAlleviationFoundation.dll
    User 1: john.doe@example.com / TestPass123!
    User 2: jane.smith@example.com / TestPass123!
    User 3: mike.wilson@example.com / TestPass123!
+   Test User: testuser@gmail.com / 123456
    ```
+   
+   **Sample Test User Details**:
+   - **Full Name**: Test User
+   - **Email**: testuser@gmail.com
+   - **Password**: 123456
 2. **Test Data Separation**:
    - Login as **User 1**, create donations and reports
    - Login as **User 2**, verify you cannot see User 1's data
