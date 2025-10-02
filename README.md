@@ -1,4 +1,4 @@
-# 🌟 Disaster Alleviation Foundation - ASP.NET Core Web Application
+# 🌟 Gift of the givers aplication
 
 A comprehensive, secure web application designed to support disaster relief operations through efficient resource management, volunteer coordination, and incident reporting. Built with modern web technologies and enterprise-level security features.
 

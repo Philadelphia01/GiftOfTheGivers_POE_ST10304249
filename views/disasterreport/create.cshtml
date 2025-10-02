@@ -5,8 +5,21 @@
 
 <section class="container my-4">
     <h1 class="h4 mb-3">Report Incident</h1>
+    
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+    }
+    
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+    }
+    
+    <div asp-validation-summary="All" class="text-danger"></div>
+    
     <div class="card card-elevated p-4" style="background:#FFF8F2;">
-        <form asp-action="Create" method="post" class="row g-3">
+        <form asp-controller="DisasterReport" asp-action="Create" method="post" class="row g-3">
             @Html.AntiForgeryToken()
             <div class="col-md-6">
                 <label asp-for="Location" class="form-label small"></label>

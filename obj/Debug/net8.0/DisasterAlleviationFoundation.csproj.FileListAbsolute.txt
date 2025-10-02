@@ -571,8 +571,8 @@ C:\Users\RC_Student_Lab\Downloads\DisasterAlleviationFoundation\DisasterAlleviat
 C:\Users\RC_Student_Lab\Downloads\DisasterAlleviationFoundation\DisasterAlleviationFoundation\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\RC_Student_Lab\Downloads\DisasterAlleviationFoundation\DisasterAlleviationFoundation\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 C:\Users\RC_Student_Lab\Downloads\DisasterAlleviationFoundation\bin\Debug\net8.0\appsettings.json
-C:\Users\RC_Student_Lab\Downloads\DisasterAlleviationFoundation\bin\Debug\net8.0\DisasterAlleviationFoundation.staticwebassets.endpoints.json
 C:\Users\RC_Student_Lab\Downloads\DisasterAlleviationFoundation\bin\Debug\net8.0\DisasterAlleviationFoundation.staticwebassets.runtime.json
+C:\Users\RC_Student_Lab\Downloads\DisasterAlleviationFoundation\bin\Debug\net8.0\DisasterAlleviationFoundation.staticwebassets.endpoints.json
 C:\Users\RC_Student_Lab\Downloads\DisasterAlleviationFoundation\bin\Debug\net8.0\DisasterAlleviationFoundation.exe
 C:\Users\RC_Student_Lab\Downloads\DisasterAlleviationFoundation\bin\Debug\net8.0\DisasterAlleviationFoundation.deps.json
 C:\Users\RC_Student_Lab\Downloads\DisasterAlleviationFoundation\bin\Debug\net8.0\DisasterAlleviationFoundation.runtimeconfig.json

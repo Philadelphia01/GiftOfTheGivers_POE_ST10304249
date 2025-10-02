@@ -101,12 +101,25 @@ namespace DisasterAlleviationFoundation.Controllers
                 return RedirectToAction("SignIn", "Account");
             }
 
+            // Debug: Log model state
+            Console.WriteLine($"ModelState.IsValid: {ModelState.IsValid}");
+            if (!ModelState.IsValid)
+            {
+                foreach (var error in ModelState)
+                {
+                    Console.WriteLine($"Key: {error.Key}, Errors: {string.Join(", ", error.Value.Errors.Select(e => e.ErrorMessage))}");
+                }
+                TempData["ErrorMessage"] = "Please fill in all required fields.";
+            }
+
             if (ModelState.IsValid)
             {
                 try
                 {
                     report.ReportedByUserId = userId;
                     report.DateReported = DateTime.Now;
+                    
+                    Console.WriteLine($"Saving disaster report: Location={report.Location}, Type={report.DisasterType}, Description={report.Description}");
                     
                     _context.Add(report);
                     await _context.SaveChangesAsync();
@@ -116,6 +129,7 @@ namespace DisasterAlleviationFoundation.Controllers
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine($"Error saving disaster report: {ex.Message}");
                     ModelState.AddModelError("", $"Error saving disaster report: {ex.Message}");
                 }
             }

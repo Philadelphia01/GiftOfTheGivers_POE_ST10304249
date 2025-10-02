@@ -22,8 +22,9 @@ namespace DisasterAlleviationFoundation.Models
         [DataType(DataType.DateTime)]
         public DateTime DateReported { get; set; }
 
+        [Required]
         [StringLength(1000)]
-        public string? Description { get; set; }
+        public string Description { get; set; } = null!;
 
         public ApplicationUser? ReportedByUser { get; set; }
     }
