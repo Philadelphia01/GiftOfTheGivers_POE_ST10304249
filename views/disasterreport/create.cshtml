@@ -21,6 +21,9 @@
     <div class="card card-elevated p-4" style="background:#FFF8F2;">
         <form asp-controller="DisasterReport" asp-action="Create" method="post" class="row g-3">
             @Html.AntiForgeryToken()
+            @* Hidden fields for server-set values to avoid validation issues *@
+            <input type="hidden" asp-for="ReportedByUserId" />
+            <input type="hidden" asp-for="DateReported" />
             <div class="col-md-6">
                 <label asp-for="Location" class="form-label small"></label>
                 <input asp-for="Location" class="form-control contact-input" />

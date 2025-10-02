@@ -91,7 +91,7 @@ namespace DisasterAlleviationFoundation.Controllers
         // POST: DisasterReport/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Location,DisasterType,Description")] DisasterReport report)
+        public async Task<IActionResult> Create(DisasterReport report)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             
@@ -100,6 +100,14 @@ namespace DisasterAlleviationFoundation.Controllers
                 TempData["ErrorMessage"] = "You must be logged in to report a disaster.";
                 return RedirectToAction("SignIn", "Account");
             }
+
+            // Set the user ID and date before validation
+            report.ReportedByUserId = userId;
+            report.DateReported = DateTime.Now;
+
+            // Remove validation errors for fields that are set automatically
+            ModelState.Remove("ReportedByUserId");
+            ModelState.Remove("DateReported");
 
             // Debug: Log model state
             Console.WriteLine($"ModelState.IsValid: {ModelState.IsValid}");
@@ -116,9 +124,6 @@ namespace DisasterAlleviationFoundation.Controllers
             {
                 try
                 {
-                    report.ReportedByUserId = userId;
-                    report.DateReported = DateTime.Now;
-                    
                     Console.WriteLine($"Saving disaster report: Location={report.Location}, Type={report.DisasterType}, Description={report.Description}");
                     
                     _context.Add(report);

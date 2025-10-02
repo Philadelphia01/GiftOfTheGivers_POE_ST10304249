@@ -13,7 +13,7 @@ namespace DisasterAlleviationFoundation.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(bool viewWebsite = false)
         {
             _logger.LogInformation($"User authenticated: {User.Identity.IsAuthenticated}");
             if (!User.Identity.IsAuthenticated)
@@ -21,6 +21,14 @@ namespace DisasterAlleviationFoundation.Controllers
                 _logger.LogInformation("Redirecting to register");
                 return RedirectToPage("/Account/Register", new { area = "Identity" });
             }
+            
+            // Redirect admin users to admin dashboard (unless they specifically want to view the website)
+            if (User.IsInRole("Admin") && !viewWebsite)
+            {
+                _logger.LogInformation("Admin user detected, redirecting to admin dashboard");
+                return RedirectToAction("Index", "AdminDashboard");
+            }
+            
             return View();
         }
 
