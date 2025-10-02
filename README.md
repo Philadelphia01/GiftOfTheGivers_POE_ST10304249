@@ -210,8 +210,21 @@ dotnet DisasterAlleviationFoundation.dll
 ```
 User 1: john.doe@example.com
 User 2: jane.smith@example.com
-Admin: admin@example.com (if admin role configured)
+Admin: admin@disasterrelief.com / Admin123!
 ```
+
+### **Admin Account**
+A default admin account is automatically created when you first run the application:
+- **Email**: `admin@disasterrelief.com`
+- **Password**: `Admin123!`
+- **Role**: Administrator with full system access
+
+**Admin Features:**
+- View all donations from all users
+- View all disaster reports from all users
+- Access inventory management system
+- Distribute donations to beneficiaries
+- System-wide oversight and management
 
 ---
 
