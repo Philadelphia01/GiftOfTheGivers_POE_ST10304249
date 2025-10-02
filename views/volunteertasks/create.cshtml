@@ -1,0 +1,47 @@
+@model DisasterAlleviationFoundation.Models.VolunteerTask
+@{
+    ViewData["Title"] = "Create Task";
+}
+
+<section class="container my-4">
+    <h1 class="h4 mb-3">Create Volunteer Task</h1>
+    <div class="card card-elevated p-4" style="background:#FFF8F2;">
+        <form asp-action="Create" method="post" class="row g-3">
+            <div class="col-md-6">
+                <label asp-for="Title" class="form-label small"></label>
+                <input asp-for="Title" class="form-control contact-input" />
+                <span asp-validation-for="Title" class="text-danger small"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Status" class="form-label small"></label>
+                <input asp-for="Status" class="form-control contact-input" />
+            </div>
+            <div class="col-12">
+                <label asp-for="Description" class="form-label small"></label>
+                <textarea asp-for="Description" class="form-control contact-input" rows="3"></textarea>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="StartAt" class="form-label small"></label>
+                <input asp-for="StartAt" type="datetime-local" class="form-control contact-input" />
+            </div>
+            <div class="col-md-6">
+                <label asp-for="EndAt" class="form-label small"></label>
+                <input asp-for="EndAt" type="datetime-local" class="form-control contact-input" />
+            </div>
+            <div class="col-md-6">
+                <label asp-for="AssignedVolunteerId" class="form-label small"></label>
+                <input asp-for="AssignedVolunteerId" class="form-control contact-input" />
+            </div>
+            <div class="col-12">
+                <label asp-for="Notes" class="form-label small"></label>
+                <textarea asp-for="Notes" class="form-control contact-input" rows="2"></textarea>
+            </div>
+            <div class="col-12 d-flex gap-2">
+                <button type="submit" class="btn btn-orange rounded-pill">Save</button>
+                <a class="btn btn-outline-secondary rounded-pill" href="@Url.Action("Index")">Cancel</a>
+            </div>
+        </form>
+    </div>
+</section>
+
+

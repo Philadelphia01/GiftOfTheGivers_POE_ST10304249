@@ -1,0 +1,76 @@
+@model IEnumerable<DisasterAlleviationFoundation.Models.Donation>
+
+@{
+    ViewData["Title"] = "Donations";
+}
+
+<div class="container my-4">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h3 m-0">Donations</h1>
+        <div class="d-flex gap-2">
+            @if (User.IsInRole("Admin") || User.IsInRole("Administrator"))
+            {
+                <a asp-action="Inventory" class="btn btn-outline-info rounded-pill">Inventory</a>
+            }
+            <a asp-action="Create" class="btn btn-primary rounded-pill">Make a Donation</a>
+        </div>
+    </div>
+    <div class="card card-donation p-0">
+        <div class="table-responsive">
+            <table class="table align-middle mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>Resource Type</th>
+                        <th>Quantity</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Donor</th>
+                        <th class="text-end">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+@foreach (var donation in Model)
+{
+                    <tr>
+                        <td>@donation.ResourceType</td>
+                        <td><span class="badge text-bg-success">@donation.Quantity</span></td>
+                        <td>
+                            <span class="badge text-bg-@(donation.Status == "Distributed" ? "success" : donation.Status == "Approved" ? "info" : donation.Status == "Pending" ? "warning" : "danger")">
+                                @donation.Status
+                            </span>
+                        </td>
+                        <td>@donation.DateDonated.ToLocalTime().ToString("g")</td>
+                        <td>@(donation.DonorUser?.FullName ?? "You")</td>
+                        <td class="text-end">
+                            <a asp-action="Details" asp-route-id="@donation.Id" class="btn btn-outline-info btn-sm rounded-pill">Details</a>
+@if (User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value == donation.DonorUserId)
+{
+                            <a asp-action="Edit" asp-route-id="@donation.Id" class="btn btn-outline-warning btn-sm rounded-pill ms-1">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@donation.Id" class="btn btn-outline-danger btn-sm rounded-pill ms-1">Delete</a>
+}
+@if (User.IsInRole("Admin") || User.IsInRole("Administrator"))
+{
+                            <a asp-action="Distribute" asp-route-id="@donation.Id" class="btn btn-outline-primary btn-sm rounded-pill ms-1">Manage</a>
+}
+                        </td>
+                    </tr>
+}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

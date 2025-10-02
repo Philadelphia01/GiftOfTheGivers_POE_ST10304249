@@ -1,0 +1,76 @@
+@model DisasterAlleviationFoundation.Models.VolunteerCommunication
+
+@{
+    ViewData["Title"] = "Send Message";
+}
+
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Send Message</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="RecipientUserId" class="form-label">To</label>
+                            <select asp-for="RecipientUserId" class="form-select">
+                                <option value="">Select recipient...</option>
+                                @foreach (dynamic user in ViewBag.Users)
+                                {
+                                    <option value="@user.Id">@user.FullName</option>
+                                }
+                            </select>
+                            <span asp-validation-for="RecipientUserId" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Subject" class="form-label">Subject</label>
+                            <input asp-for="Subject" class="form-control" placeholder="Enter message subject" />
+                            <span asp-validation-for="Subject" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="MessageType" class="form-label">Message Type</label>
+                            <select asp-for="MessageType" class="form-select">
+                                @foreach (var type in ViewBag.MessageTypes)
+                                {
+                                    <option value="@type">@type</option>
+                                }
+                            </select>
+                            <span asp-validation-for="MessageType" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Message" class="form-label">Message</label>
+                            <textarea asp-for="Message" class="form-control" rows="6" placeholder="Enter your message here..."></textarea>
+                            <span asp-validation-for="Message" class="text-danger"></span>
+                        </div>
+
+                        @if (Model.RelatedTaskId.HasValue)
+                        {
+                            <div class="mb-3">
+                                <div class="alert alert-info">
+                                    <i class="bi bi-info-circle"></i> This message is related to a volunteer task.
+                                </div>
+                                <input type="hidden" asp-for="RelatedTaskId" />
+                            </div>
+                        }
+
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

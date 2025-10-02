@@ -1,0 +1,66 @@
+@model DisasterAlleviationFoundation.Models.Donation
+
+@{
+    ViewData["Title"] = "Make a Donation";
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="text-center mb-4">
+                <h1 class="h3 fw-bold">Make a Donation</h1>
+                <p class="text-muted">Help us make a difference in communities around the world</p>
+            </div>
+            
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-5">
+                    <form asp-action="Create" method="post" id="donationForm">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label asp-for="ResourceType" class="form-label fw-semibold">Resource Type</label>
+                                <input asp-for="ResourceType" class="form-control form-control-lg" placeholder="e.g. Food, Clothing, Medical Supplies" />
+                                <span asp-validation-for="ResourceType" class="text-danger small"></span>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label asp-for="Quantity" class="form-label fw-semibold">Quantity</label>
+                                <input asp-for="Quantity" class="form-control form-control-lg" type="number" min="1" placeholder="Enter quantity" />
+                                <span asp-validation-for="Quantity" class="text-danger small"></span>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label asp-for="DateDonated" class="form-label fw-semibold">Donation Date</label>
+                                <input asp-for="DateDonated" class="form-control form-control-lg" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                                <span asp-validation-for="DateDonated" class="text-danger small"></span>
+                            </div>
+                            
+                            <div class="col-12">
+                                <label asp-for="Note" class="form-label fw-semibold">Additional Notes</label>
+                                <textarea asp-for="Note" class="form-control form-control-lg" rows="4" placeholder="Tell us more about your donation..."></textarea>
+                                <span asp-validation-for="Note" class="text-danger small"></span>
+                            </div>
+                            
+                            <div class="col-12 text-center mt-4">
+                                <button type="submit" class="btn btn-orange btn-lg px-5 rounded-pill">Submit Donation</button>
+                                <a asp-action="Index" class="btn btn-outline-secondary btn-lg px-4 rounded-pill ms-3">Back to List</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function() {
+            $('#donationForm').on('submit', function(e) {
+                console.log('Form is being submitted');
+                var formData = $(this).serialize();
+                console.log('Form data:', formData);
+            });
+        });
+    </script>
+}

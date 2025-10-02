@@ -1,0 +1,58 @@
+@page
+@model DisasterAlleviationFoundation.Areas.Identity.Pages.Account.LoginModel
+@{
+    ViewData["Title"] = "Log in";
+    ViewData["BodyClass"] = "auth";
+}
+
+<div class="login-container">
+    <div class="login-card">
+        <!-- Left Side - Image -->
+        <div class="login-image-section">
+            <img src="~/images/ff.jpg" asp-append-version="true" alt="Login Hero" class="login-hero-image" />
+        </div>
+        
+        <!-- Right Side - Form -->
+        <div class="login-form-section">
+            <div class="login-form-header">
+                <h1 class="login-title">Sign In</h1>
+                <div class="social-login">
+                    <div class="social-icon facebook">
+                        <i class="bi bi-facebook"></i>
+                    </div>
+                    <div class="social-icon twitter">
+                        <i class="bi bi-twitter"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <form id="account" method="post" class="login-form" novalidate>
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3" role="alert"></div>
+                @Html.AntiForgeryToken()
+                
+                <div class="form-field">
+                    <label asp-for="Input.Email" class="field-label" for="Input_Email">USERNAME</label>
+                    <input asp-for="Input.Email" id="Input_Email" name="Input.Email" class="field-input" autocomplete="username" aria-required="true" placeholder="Username" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                
+                <div class="form-field">
+                    <label asp-for="Input.Password" class="field-label" for="Input_Password">PASSWORD</label>
+                    <input asp-for="Input.Password" id="Input_Password" name="Input.Password" class="field-input" autocomplete="current-password" aria-required="true" placeholder="Password" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                
+                <button id="login-submit" type="submit" class="login-button">Sign In</button>
+                
+                <div class="login-options">
+                    <a id="forgot-password" asp-page="./ForgotPassword" class="forgot-link">Forgot Password</a>
+                </div>
+                
+                <div class="signup-link">
+                    <span>Not a member? </span>
+                    <a href="/Identity/Account/Register" class="signup-text">Sign Up</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+@model DisasterAlleviationFoundation.Models.Donation
+
+@{
+    ViewData["Title"] = "Donation Details";
+}
+
+<div class="container my-4">
+    <h1 class="h3 mb-3">Donation Details</h1>
+    <div class="card card-donation p-4">
+        <div class="row g-3">
+            <div class="col-md-6"><strong>Resource Type:</strong> @Model.ResourceType</div>
+            <div class="col-md-6"><strong>Quantity:</strong> <span class="badge text-bg-success">@Model.Quantity</span></div>
+            <div class="col-md-6"><strong>Date Donated:</strong> @Model.DateDonated.ToLocalTime().ToString("f")</div>
+            <div class="col-md-6"><strong>Donor:</strong> @Model.DonorUser?.FullName ?? Model.DonorUserId</div>
+            <div class="col-12"><strong>Note:</strong><p class="mb-0">@Model.Note</p></div>
+        </div>
+        <div class="mt-3">
+            <a asp-action="Index" class="btn btn-outline-secondary rounded-pill">Back to List</a>
+        </div>
+    </div>
+</div>

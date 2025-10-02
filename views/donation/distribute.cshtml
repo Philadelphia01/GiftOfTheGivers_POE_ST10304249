@@ -1,0 +1,66 @@
+@model DisasterAlleviationFoundation.Models.Donation
+
+@{
+    ViewData["Title"] = "Distribute Donation";
+}
+
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Distribute Donation</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h6>Resource Type</h6>
+                            <p class="text-muted">@Model.ResourceType</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Quantity</h6>
+                            <p class="text-muted">@Model.Quantity</p>
+                        </div>
+                    </div>
+
+                    <form asp-action="Distribute" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="Id" />
+                        
+                        <div class="mb-3">
+                            <label asp-for="Status" class="form-label">Status</label>
+                            <select asp-for="Status" class="form-select">
+                                <option value="Pending">Pending</option>
+                                <option value="Approved">Approved</option>
+                                <option value="Distributed">Distributed</option>
+                                <option value="Cancelled">Cancelled</option>
+                            </select>
+                            <span asp-validation-for="Status" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Location" class="form-label">Distribution Location</label>
+                            <input asp-for="Location" class="form-control" placeholder="Enter distribution location" />
+                            <span asp-validation-for="Location" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="DistributionNotes" class="form-label">Distribution Notes</label>
+                            <textarea asp-for="DistributionNotes" class="form-control" rows="4" placeholder="Enter any notes about the distribution..."></textarea>
+                            <span asp-validation-for="DistributionNotes" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">Update Status</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

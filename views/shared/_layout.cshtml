@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Disaster Alleviation Foundation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+          crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body class="@ViewData["BodyClass"]">
+    @if (!((ViewData["BodyClass"] as string)?.Contains("auth") ?? false))
+    {
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark daf-navbar sticky-top">
+                <div class="container-fluid ps-2 pe-0">
+                    <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="@Url.Action("Index", "Home")">
+                        <i class="bi bi-heart-fill"></i>
+                        Gift Of The Givers
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse nav-underline" id="navbarCollapse">
+                        <ul class="navbar-nav mx-auto mb-2 mb-md-0">
+                            <li class="nav-item"><a class="nav-link text-white @(ViewContext.RouteData.Values["action"]?.ToString()=="Index" && ViewContext.RouteData.Values["controller"]?.ToString()=="Home"?"active":"")" href="@Url.Action("Index", "Home")">Home</a></li>
+                            <li class="nav-item"><a class="nav-link text-white @(ViewContext.RouteData.Values["action"]?.ToString()=="About"?"active":"")" href="@Url.Action("About", "Home")">About</a></li>
+                            <li class="nav-item"><a class="nav-link text-white @(ViewContext.RouteData.Values["controller"]?.ToString()=="Donation"?"active":"")" href="@Url.Action("Index", "Donation")">Donate</a></li>
+                            <li class="nav-item"><a class="nav-link text-white @(ViewContext.RouteData.Values["controller"]?.ToString()=="DisasterReport"?"active":"")" href="@Url.Action("Create", "DisasterReport")">Report Incident</a></li>
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle text-white @(ViewContext.RouteData.Values["controller"]?.ToString()=="VolunteerTasks" || ViewContext.RouteData.Values["controller"]?.ToString()=="TaskBrowse" || ViewContext.RouteData.Values["controller"]?.ToString()=="VolunteerCommunication" ? "active" : "")" href="#" id="volunteerTasksDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" data-bs-display="static">
+        Volunteer Tasks
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="volunteerTasksDropdown">
+        <li><a class="dropdown-item" href="@Url.Action("Index", "VolunteerTasks")">My Tasks</a></li>
+        <li><a class="dropdown-item" href="@Url.Action("Index", "TaskBrowse")">Browse Tasks</a></li>
+        <li><a class="dropdown-item" href="@Url.Action("Create", "VolunteerTasks")">Create Task</a></li>
+        <li><a class="dropdown-item" href="@Url.Action("Index", "VolunteerCommunication")">Messages</a></li>
+    </ul>
+</li>
+                            <li class="nav-item"><a class="nav-link text-white @(ViewContext.RouteData.Values["action"]?.ToString()=="Contact"?"active":"")" href="@Url.Action("Contact", "Home")">Contact</a></li>
+                        </ul>
+                        <ul class="navbar-nav ms-auto align-items-center">
+                            @if (User.Identity?.IsAuthenticated ?? false)
+                            {
+                                <li class="nav-item">
+                                    <span class="navbar-text me-2 text-white">Hello, @User.Identity.Name!</span>
+                                </li>
+                                <li class="nav-item">
+                                    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="~/" method="post" style="display:inline;">
+                                        <button type="submit" class="btn btn-outline-light rounded-pill">Logout</button>
+                                    </form>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item"><a class="nav-link text-white me-2" href="/Account/SignIn">Log In</a></li>
+                                <li class="nav-item"><a class="btn btn-signup rounded-pill" href="/Identity/Account/Register">Sign Up</a></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    }
+    @{
+        var isAuth = (ViewData["BodyClass"] as string)?.Contains("auth") ?? false;
+    }
+    @if (isAuth)
+    {
+        <main class="auth-shell">
+            <div class="auth-grid">
+                <section class="auth-form">
+                    <div class="auth-form-card">
+                        @RenderBody()
+                    </div>
+                </section>
+            </div>
+        </main>
+    }
+    else
+    {
+        var isHomeFull = (ViewData["BodyClass"] as string)?.Contains("home-no-top-padding") ?? false;
+        var isVolunteerDashboard = (ViewData["BodyClass"] as string)?.Contains("volunteer-dashboard") ?? false;
+        if (isHomeFull || isVolunteerDashboard)
+        {
+            <main class="w-100">
+                @RenderBody()
+            </main>
+        }
+        else
+        {
+            <main class="container mt-4">
+                @RenderBody()
+            </main>
+        }
+    }
+    @if (!((ViewData["BodyClass"] as string)?.Contains("auth") ?? false))
+    {
+        <footer class="footer mt-auto py-5">
+            @{
+                var isVolunteerDashboard = (ViewData["BodyClass"] as string)?.Contains("volunteer-dashboard") ?? false;
+            }
+            <div class="@(isVolunteerDashboard ? "container-fluid" : "container")">
+            <div class="row gy-4">
+                <div class="col-lg-4">
+                    <strong style="color:#f08b1d;">Disaster Alleviation Foundation</strong>
+                    <p class="small mb-3">Disaster Alleviation Foundation makes it easy and safe for you to give to local projects anywhere in the world, while providing nonprofits with the tools, training, and support they need to thrive.</p>
+                    <div class="d-flex gap-3">
+                        <a class="text-white" href="#" aria-label="Facebook"><i class="bi bi-facebook fs-4"></i></a>
+                        <a class="text-white" href="#" aria-label="Instagram"><i class="bi bi-instagram fs-4"></i></a>
+                        <a class="text-white" href="#" aria-label="LinkedIn"><i class="bi bi-linkedin fs-4"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="row gy-4">
+                        <div class="col-6 col-md-4">
+                            <h6 class="text-uppercase small" style="color:#f08b1d;">Donors</h6>
+                            <ul class="list-unstyled small mb-0">
+                                <li><a class="link-light text-decoration-none" href="@Url.Action("Create","Donation")">Ways to Give</a></li>
+                                <li><a class="link-light text-decoration-none" href="@Url.Action("Create","Donation")">Philanthropic Gifts</a></li>
+                                <li><a class="link-light text-decoration-none" href="@Url.Action("Create","Donation")">Donate in Honor</a></li>
+                                <li><a class="link-light text-decoration-none" href="@Url.Action("Create","Donation")">Start a Fundraiser</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <h6 class="text-uppercase small" style="color:#f08b1d;">Companies</h6>
+                            <ul class="list-unstyled small mb-0">
+                                <li><a class="link-light text-decoration-none" href="@Url.Action("About","Home")">Our Services</a></li>
+                                <li><a class="link-light text-decoration-none" href="@Url.Action("About","Home")">Our Partners</a></li>
+                                <li><a class="link-light text-decoration-none" href="@Url.Action("About","Home")">Corporate Gift Cards</a></li>
+                                <li><a class="link-light text-decoration-none" href="@Url.Action("About","Home")">GlobalGiving Atlas</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <h6 class="text-uppercase small" style="color:#f08b1d;">About Us</h6>
+                            <ul class="list-unstyled small mb-0">
+                                <li><a class="link-light text-decoration-none" href="@Url.Action("About","Home")">Our Team</a></li>
+                                <li><a class="link-light text-decoration-none" href="@Url.Action("About","Home")">Jobs</a></li>
+                                <li><a class="link-light text-decoration-none" href="@Url.Action("About","Home")">FAQs</a></li>
+                                <li><a class="link-light text-decoration-none" href="@Url.Action("About","Home")">Contact Us</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <h6 class="text-uppercase small" style="color:#f08b1d;">Learn Library</h6>
+                            <ul class="list-unstyled small mb-0">
+                                <li><a class="link-light text-decoration-none" href="@Url.Action("About","Home")">Nonprofit Resources</a></li>
+                                <li><a class="link-light text-decoration-none" href="@Url.Action("About","Home")">Corporate Giving Resources</a></li>
+                                <li><a class="link-light text-decoration-none" href="@Url.Action("About","Home")">Donor Resources</a></li>
+                                <li><a class="link-light text-decoration-none" href="@Url.Action("About","Home")">Success Stories</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <h6 class="text-uppercase small" style="color:#f08b1d;">Quick links</h6>
+                            <ul class="list-unstyled small mb-0">
+                                <li><a class="link-light text-decoration-none" href="@Url.Action("HelpCenter","Pages")">Help Center</a></li>
+                                <li><a class="link-light text-decoration-none" href="@Url.Action("Index","Home")">Home</a></li>
+                                <li><a class="link-light text-decoration-none" href="@Url.Action("About","Home")">About</a></li>
+                                <li><a class="link-light text-decoration-none" href="@Url.Action("Create","Donation")">Donate</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top border-light mt-4 pt-3 small">
+                <div>© Copyright 2000-2024 Gift of the Givers</div>
+                <div>Registered Charity in South Africa</div>
+                <div>180 Katherine st , Barlowpark sandton , South Africa &nbsp; &nbsp; Questions? <a class="link-light text-decoration-none" href="@Url.Action("Contact","Home")">Contact Us</a></div>
+            </div>
+        </footer>
+    }
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    @RenderSection("Scripts", required: false)
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
+            dropdownElementList.map(function (dropdownToggleEl) {
+                return new bootstrap.Dropdown(dropdownToggleEl)
+            })
+        });
+    </script>
+</body>
+</html>

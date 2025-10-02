@@ -1,0 +1,140 @@
+@{
+    ViewData["Title"] = "About";
+}
+
+<!-- Section 1: Hero -->
+<section class="about-hero py-5 bg-white">
+    <div class="container">
+        <div class="row g-4 align-items-center">
+            <div class="col-lg-6">
+                <div class="label-orange mb-2"></div>
+                <h1 class="display-6 fw-bold mb-3">The mission behind our charity foundation</h1>
+                <div class="d-flex gap-3 flex-wrap">
+                    <a href="@Url.Action("Index","Donation")" class="btn btn-orange rounded-pill px-4">Donate now</a>
+                    <a href="@Url.Action("Index","Volunteer")" class="btn btn-outline-orange rounded-pill px-4">How can I help</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about-hero-images">
+                    <img src="~/images/happies.jpg" asp-append-version="true" alt="Smiling child" class="img-fluid main" />
+                    <img src="~/images/read.jpg" asp-append-version="true" alt="Caregiver with child" class="img-fluid overlap" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="section-divider" />
+    <div class="container text-center py-5">
+        <span class="overline text-uppercase">OUR RESULTS</span>
+        <h2 class="h3 fw-bold mb-4">Take a look at the big impact we have done</h2>
+        <div class="row g-4 about-stats">
+            <div class="col-6 col-md-3"><div class="stat"><div class="num">200m</div><div class="label">Humans impacted</div></div></div>
+            <div class="col-6 col-md-3"><div class="stat"><div class="num">50k</div><div class="label">Collaborators</div></div></div>
+            <div class="col-6 col-md-3"><div class="stat"><div class="num">370k</div><div class="label">Donations</div></div></div>
+            <div class="col-6 col-md-3"><div class="stat"><div class="num">100+</div><div class="label">Assisted communities</div></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 3: Our Story -->
+<section class="about-story py-5" style="background:#FFF8F2;">
+    <div class="container">
+        <div class="row g-4 align-items-center">
+            <div class="col-lg-6">
+                <img src="~/images/marks.jpeg" asp-append-version="true" class="img-fluid rounded-4 shadow-sm" alt="Mother and baby" />
+            </div>
+            <div class="col-lg-6">
+                <span class="overline text-uppercase">OUR STORY</span>
+                <h2 class="h3 fw-bold mb-3">Why did we start this foundation?</h2>
+                <p>The Gift of the Givers Foundation is the largest disaster response, non-governmental organisation of African origin on the African continent.</p>
+                <p>It works to unite people, with a common vision, to make a real and telling difference by serving mankind for the ‘Greater Good’.</p>
+                <p>Assistance is provided unconditionally; assisting the needy, irrespective of human or animal, race, religion, colour, class, political affiliation or geographic location.</p>
+                <p>Since its inception in 1992, the organisation has been responsible for the delivery of life-saving goods and on-the-ground support for innumerable people, collectively valued at some R4.5 billion, in more than 45 countries across the globe, including South Africa.</p>
+                <p>Gift of the Givers restores the hope and dignity of the most vulnerable in their time of need, rebuilding prosperous communities and empowering leaders of tomorrow.</p>
+            </div>
+        </div>
+    </div>
+    <hr class="section-divider" />
+</section>
+
+<!-- Section 4: Our Mission -->
+<section class="about-mission py-5" style="background:#FFF8F2;">
+    <div class="container">
+        <div class="row g-4 align-items-start">
+            <div class="col-lg-6">
+                <h3 class="h4 fw-bold">The mission we are working towards</h3>
+                <p>We aim to eradicate hunger, reduce poverty, and rebuild communities after crises through locally led programs and transparent partnerships.</p>
+                <a href="@Url.Action("Index","Donation")" class="btn btn-orange rounded-pill px-4">Donate now</a>
+            </div>
+            <div class="col-lg-6">
+                <div class="card card-elevated p-4">
+                    <h4 class="h5 fw-bold">Our mission is to eradicate hunger, poverty and war</h4>
+                    <p class="mb-3">We deliver nutritious food, support education, and invest in livelihoods so families can thrive again.</p>
+                    <ul class="list-unstyled mb-4 about-bullets">
+                        <li><i class="bi bi-check-circle-fill"></i> Excellence in our accountability and impact</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Partnerships with local leaders and experts</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Data-informed programs that scale</li>
+                    </ul>
+                    <div class="d-flex align-items-center gap-3">
+                        <img src="~/images/read our story.jpg" asp-append-version="true" alt="Founder" width="44" height="44" class="rounded-circle object-fit-cover" />
+                        <div>
+                            <div class="fw-semibold">Sophia Moore</div>
+                            <small class="text-muted">Founder</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 5: Leadership Team -->
+<section class="about-leaders py-5 bg-white">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-3">
+            <h2 class="h4 fw-bold mb-0">OUR PRIMARY FOCUS</h2>
+            <a href="@Url.Action("Index","Donation")" class="btn btn-orange rounded-pill px-4">Donate now</a>
+        </div>
+        <p class="text-muted mb-4">The Gift of the Givers Foundation is the largest disaster response non-governmental organisation of African origin on the African continent. The essence of our presence is to bring hope and restore dignity to the most vulnerable</p>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card team-card h-100">
+                    <img src="~/images/response plan.jpg" asp-append-version="true" class="team-photo" alt="Sophie Moore" />
+                    <div class="card-body">
+                        <div class="fw-semibold">Disaster Response</div>
+                        <small class="text-muted">Together, we act quickly to save lives and restore dignity to those who need it most.”</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card team-card h-100">
+                    <img src="~/images/water prov.jpg" asp-append-version="true" class="team-photo" alt="John Carter" />
+                    <div class="card-body">
+                        <div class="fw-semibold">Water Provision</div>
+                        <small class="text-muted">“Together, we provide access to clean, safe, and reliable water across the globe one community at a time.</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card team-card h-100">
+                    <img src="~/images/allivation.jpg" asp-append-version="true" class="team-photo" alt="Emily Weber" />
+                    <div class="card-body">
+                        <div class="fw-semibold">Hunger Alleviation</div>
+                        <small class="text-muted">“Together, we provide nutritious food to impoverished children and families around the world and around the corner.”</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4 justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="card card-elevated p-3 d-flex flex-row align-items-center gap-3">
+                    <i class="bi bi-people-fill fs-3" style="color:#f08b1d"></i>
+                    <div>
+                        <div class="fw-semibold">And 50,000 more volunteers</div>
+                        <small class="text-muted">helping our cause</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

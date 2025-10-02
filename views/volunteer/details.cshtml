@@ -1,0 +1,20 @@
+@model DisasterAlleviationFoundation.Models.Volunteer
+
+@{
+    ViewData["Title"] = "Volunteer Task Details";
+}
+
+<div class="container my-4">
+    <h1 class="h3 mb-3">Volunteer Task Details</h1>
+    <div class="card card-donation p-4">
+        <div class="row g-3">
+            <div class="col-md-6"><strong>Task:</strong> @Model.Task</div>
+            <div class="col-md-6"><strong>Scheduled Date:</strong> @Model.ScheduledDate.ToLocalTime().ToString("f")</div>
+            <div class="col-md-6"><strong>Status:</strong> @(Model.IsCompleted ? "Completed" : "Pending")</div>
+            <div class="col-md-6"><strong>Volunteer:</strong> @Model.VolunteerUser?.FullName ?? Model.VolunteerUserId</div>
+        </div>
+        <div class="mt-3">
+            <a asp-action="Index" class="btn btn-outline-secondary rounded-pill">Back to List</a>
+        </div>
+    </div>
+</div>

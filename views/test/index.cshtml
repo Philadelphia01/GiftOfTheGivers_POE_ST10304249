@@ -1,0 +1,49 @@
+@{
+    ViewData["Title"] = "Database Test";
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Database Connection Test</h3>
+                </div>
+                <div class="card-body">
+                    <div class="alert @(ViewBag.Status.ToString().Contains("successful") ? "alert-success" : "alert-danger")">
+                        <strong>Status:</strong> @ViewBag.Status
+                    </div>
+                    
+                    @if (ViewBag.DonationCount != null)
+                    {
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card bg-light">
+                                    <div class="card-body text-center">
+                                        <h4>@ViewBag.DonationCount</h4>
+                                        <p class="mb-0">Donations in Database</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card bg-light">
+                                    <div class="card-body text-center">
+                                        <h4>@ViewBag.VolunteerTaskCount</h4>
+                                        <p class="mb-0">Volunteer Tasks in Database</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    
+                    <div class="mt-4">
+                        <a href="/Donation/Create" class="btn btn-primary">Test Donation Form</a>
+                        <a href="/VolunteerTasks/Create" class="btn btn-secondary">Test Volunteer Task Form</a>
+                        <a href="/Donation" class="btn btn-info">View Donations</a>
+                        <a href="/VolunteerTasks" class="btn btn-warning">View Volunteer Tasks</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

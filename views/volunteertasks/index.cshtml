@@ -1,0 +1,173 @@
+@model IEnumerable<DisasterAlleviationFoundation.Models.VolunteerTask>
+@{
+    ViewData["Title"] = "Volunteer Tasks";
+    ViewData["BodyClass"] = "";
+}
+
+<div>
+    
+    <div class="main-content" style="margin-left: 0; width: 100%;">
+        <div class="content-header">
+            <h1 class="content-title">My Volunteer Tasks</h1>
+            <p class="content-subtitle">Manage your assigned tasks and track your contributions</p>
+        </div>
+        
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @TempData["SuccessMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                @TempData["ErrorMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        }
+        
+        <div class="content-body">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Title</th>
+                            <th>Start</th>
+                            <th>End</th>
+                            <th>Status</th>
+                            <th>Priority</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var t in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="task-title">
+                                        <strong>@t.Title</strong>
+                                        @if (!string.IsNullOrEmpty(t.Category))
+                                        {
+                                            <span class="badge bg-light text-dark ms-2">@t.Category</span>
+                                        }
+                                    </div>
+                                </td>
+                                <td>@(t.StartAt?.ToString("MMM dd, HH:mm") ?? "Not set")</td>
+                                <td>@(t.EndAt?.ToString("MMM dd, HH:mm") ?? "Not set")</td>
+                                <td>
+                                    <span class="badge bg-@(t.Status == "Completed" ? "success" : t.Status == "In Progress" ? "info" : t.Status == "Assigned" ? "primary" : "secondary")">
+                                        @t.Status
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-@(t.Priority == "Critical" ? "danger" : t.Priority == "High" ? "warning" : t.Priority == "Medium" ? "info" : "secondary")">
+                                        @t.Priority
+                                    </span>
+                                </td>
+                                <td class="text-end">
+                                    <div class="btn-group" role="group">
+                                        <a class="btn btn-outline-info btn-sm" href="@Url.Action("Details", new { id = t.Id })">
+                                            <i class="bi bi-eye"></i> Details
+                                        </a>
+                                        <a class="btn btn-outline-warning btn-sm" href="@Url.Action("Edit", new { id = t.Id })">
+                                            <i class="bi bi-pencil"></i> Edit
+                                        </a>
+                                        <a class="btn btn-outline-danger btn-sm" href="@Url.Action("Delete", new { id = t.Id })">
+                                            <i class="bi bi-trash"></i> Delete
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            
+            @if (!Model.Any())
+            {
+                <div class="empty-state">
+                    <i class="bi bi-inbox display-1 text-muted"></i>
+                    <h3 class="text-muted">No tasks assigned</h3>
+                    <p class="text-muted">You don't have any volunteer tasks yet. Browse available tasks to get started!</p>
+                    <a href="@Url.Action("Index", "TaskBrowse")" class="btn btn-primary">
+                        <i class="bi bi-search"></i> Browse Available Tasks
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<style>
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+.main-content {
+    width: 100%;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+.content-header {
+    margin-bottom: 2rem;
+}
+
+.content-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.content-subtitle {
+    color: #6c757d;
+    margin-bottom: 0;
+}
+
+.content-body {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.task-title {
+    display: flex;
+    align-items: center;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.empty-state i {
+    color: #dee2e6;
+    margin-bottom: 1rem;
+}
+
+/* Ensure footer spans full width */
+footer {
+    width: 100% !important;
+    margin-left: 0 !important;
+    position: relative !important;
+    clear: both !important;
+}
+
+@@media (max-width: 768px) {
+    .main-content {
+        padding: 1rem;
+    }
+}
+</style>
+}
+
+

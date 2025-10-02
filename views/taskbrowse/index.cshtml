@@ -1,0 +1,214 @@
+@model IEnumerable<DisasterAlleviationFoundation.Models.VolunteerTask>
+
+@{
+    ViewData["Title"] = "Browse Available Tasks";
+    ViewData["BodyClass"] = "";
+}
+
+<div>
+    
+    <div class="main-content">
+        <div class="content-header">
+            <h1 class="content-title">Browse Available Tasks</h1>
+            <p class="content-subtitle">Find and join volunteer opportunities in your community</p>
+        </div>
+        
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @TempData["SuccessMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                @TempData["ErrorMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        }
+
+    <!-- Filters -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <form method="get" class="row g-3">
+                <div class="col-md-3">
+                    <label for="category" class="form-label">Category</label>
+                    <select name="category" id="category" class="form-select">
+                        <option value="">All Categories</option>
+                        @foreach (var category in ViewBag.Categories)
+                        {
+                            <option value="@category" selected="@(ViewContext.HttpContext.Request.Query["category"] == category)">@category</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="priority" class="form-label">Priority</label>
+                    <select name="priority" id="priority" class="form-select">
+                        <option value="">All Priorities</option>
+                        @foreach (var priority in ViewBag.Priorities)
+                        {
+                            <option value="@priority" selected="@(ViewContext.HttpContext.Request.Query["priority"] == priority)">@priority</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="status" class="form-label">Status</label>
+                    <select name="status" id="status" class="form-select">
+                        <option value="">All Statuses</option>
+                        @foreach (var status in ViewBag.Statuses)
+                        {
+                            <option value="@status" selected="@(ViewContext.HttpContext.Request.Query["status"] == status)">@status</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary me-2">Filter</button>
+                    <a asp-action="Index" class="btn btn-outline-secondary">Clear</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        @foreach (var task in Model)
+        {
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span class="badge bg-@(task.Priority == "Critical" ? "danger" : task.Priority == "High" ? "warning" : task.Priority == "Medium" ? "info" : "secondary")">
+                            @task.Priority
+                        </span>
+                        <span class="badge bg-@(task.Status == "Open" ? "success" : "primary")">@task.Status</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">@task.Title</h5>
+                        <p class="card-text">@(task.Description?.Length > 100 ? task.Description.Substring(0, 100) + "..." : task.Description)</p>
+                        
+                        <div class="mb-2">
+                            <small class="text-muted">
+                                <i class="bi bi-calendar"></i> 
+                                @if (task.StartAt.HasValue)
+                                {
+                                    @task.StartAt.Value.ToString("MMM dd, yyyy HH:mm")
+                                }
+                                else
+                                {
+                                    <span>No start date</span>
+                                }
+                            </small>
+                        </div>
+                        
+                        @if (!string.IsNullOrEmpty(task.Location))
+                        {
+                            <div class="mb-2">
+                                <small class="text-muted">
+                                    <i class="bi bi-geo-alt"></i> @task.Location
+                                </small>
+                            </div>
+                        }
+                        
+                        @if (!string.IsNullOrEmpty(task.Category))
+                        {
+                            <div class="mb-2">
+                                <small class="text-muted">
+                                    <i class="bi bi-tag"></i> @task.Category
+                                </small>
+                            </div>
+                        }
+                        
+                        <div class="mb-2">
+                            <small class="text-muted">
+                                <i class="bi bi-people"></i> 
+                                @task.CurrentVolunteerCount / @task.MaxVolunteers volunteers
+                            </small>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex gap-2">
+                            <a asp-action="Details" asp-route-id="@task.Id" class="btn btn-outline-info btn-sm">Details</a>
+                            @if (task.Status == "Open" && task.CurrentVolunteerCount < task.MaxVolunteers)
+                            {
+                                <form asp-action="Join" method="post" class="d-inline">
+                                    <input type="hidden" name="id" value="@task.Id" />
+                                    <button type="submit" class="btn btn-success btn-sm">Join Task</button>
+                                </form>
+                            }
+                            else if (task.AssignedVolunteerId == User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value)
+                            {
+                                <form asp-action="Leave" method="post" class="d-inline">
+                                    <input type="hidden" name="id" value="@task.Id" />
+                                    <button type="submit" class="btn btn-warning btn-sm">Leave Task</button>
+                                </form>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="text-center py-5">
+            <i class="bi bi-inbox display-1 text-muted"></i>
+            <h3 class="text-muted">No tasks available</h3>
+            <p class="text-muted">There are currently no volunteer tasks matching your criteria.</p>
+        </div>
+    }
+    </div>
+</div>
+
+@section Scripts {
+<style>
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.main-content {
+    width: 100%;
+    padding: 2rem;
+    background-color: #f8f9fa;
+}
+
+.content-header {
+    margin-bottom: 2rem;
+}
+
+.content-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.content-subtitle {
+    color: #6c757d;
+    margin-bottom: 0;
+}
+
+.content-body {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Ensure footer spans full width */
+footer {
+    width: 100% !important;
+    margin-left: 0 !important;
+    position: relative !important;
+    clear: both !important;
+}
+
+@@media (max-width: 768px) {
+    .main-content {
+        padding: 1rem;
+    }
+}
+</style>
+}

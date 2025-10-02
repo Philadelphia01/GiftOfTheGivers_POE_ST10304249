@@ -1,0 +1,17 @@
+@using Microsoft.AspNetCore.Diagnostics
+@model IExceptionHandlerFeature?
+
+@{
+    ViewData["Title"] = "Error";
+}
+
+<h1 class="text-danger">Error.</h1>
+<h2 class="text-danger">An unexpected error occurred.</h2>
+
+@if (Model != null)
+{
+    <div>
+        <h3>Details: @Model.Error.Message</h3>
+        <pre>@Model.Error.StackTrace</pre>
+    </div>
+}

@@ -1,0 +1,46 @@
+@model IEnumerable<DisasterAlleviationFoundation.Models.DisasterReport>
+
+@{
+    ViewData["Title"] = "Disaster Reports";
+}
+
+<div class="container my-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h3 m-0">Disaster Reports</h1>
+        <a asp-action="Create" class="btn btn-primary rounded-pill">Create New Report</a>
+    </div>
+    <div class="card card-donation p-0">
+        <div class="table-responsive">
+            <table class="table align-middle mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>Location</th>
+                        <th>Type</th>
+                        <th>Date</th>
+                        <th>Reporter</th>
+                        <th class="text-end">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+@foreach (var report in Model)
+{
+                    <tr>
+                        <td>@report.Location</td>
+                        <td><span class="badge text-bg-info">@report.DisasterType</span></td>
+                        <td>@report.DateReported.ToLocalTime().ToString("g")</td>
+                        <td>@(report.ReportedByUser?.FullName ?? "Unknown Reporter")</td>
+                        <td class="text-end">
+                            <a asp-action="Details" asp-route-id="@report.Id" class="btn btn-outline-info btn-sm rounded-pill">Details</a>
+@if (User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value == report.ReportedByUserId)
+{
+                            <a asp-action="Edit" asp-route-id="@report.Id" class="btn btn-outline-warning btn-sm rounded-pill ms-1">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@report.Id" class="btn btn-outline-danger btn-sm rounded-pill ms-1">Delete</a>
+}
+                        </td>
+                    </tr>
+}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,161 @@
+@model IEnumerable<DisasterAlleviationFoundation.Models.VolunteerCommunication>
+
+@{
+    ViewData["Title"] = "Messages";
+    ViewData["BodyClass"] = "";
+}
+
+<div>
+    <div class="main-content">
+        <div class="content-header">
+            <h1 class="content-title">Messages</h1>
+            <p class="content-subtitle">Communicate with volunteers and administrators</p>
+        </div>
+        
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @TempData["SuccessMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                @TempData["ErrorMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        }
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body p-0">
+                    @if (Model.Any())
+                    {
+                        <div class="list-group list-group-flush">
+                            @foreach (var message in Model)
+                            {
+                                <div class="list-group-item @(message.IsRead ? "" : "bg-light")">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <div class="d-flex align-items-start">
+                                            <div class="me-3">
+                                                @if (!message.IsRead)
+                                                {
+                                                    <i class="bi bi-circle-fill text-primary"></i>
+                                                }
+                                                else
+                                                {
+                                                    <i class="bi bi-circle text-muted"></i>
+                                                }
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h6 class="mb-1">
+                                                    @message.Subject
+                                                    @if (!string.IsNullOrEmpty(message.MessageType) && message.MessageType != "General")
+                                                    {
+                                                        <span class="badge bg-@(message.MessageType == "Emergency" ? "danger" : message.MessageType == "Task Update" ? "info" : "warning") ms-2">
+                                                            @message.MessageType
+                                                        </span>
+                                                    }
+                                                </h6>
+                                                <p class="mb-1">@(message.Message.Length > 100 ? message.Message.Substring(0, 100) + "..." : message.Message)</p>
+                                                <small class="text-muted">
+                                                    From: @(message.SenderUser?.FullName ?? "Unknown") | 
+                                                    @if (message.RecipientUser != null)
+                                                    {
+                                                        <span>To: @message.RecipientUser.FullName | </span>
+                                                    }
+                                                    @message.SentAt.ToString("MMM dd, yyyy HH:mm")
+                                                </small>
+                                                @if (message.RelatedTask != null)
+                                                {
+                                                    <br><small class="text-info">
+                                                        <i class="bi bi-link-45deg"></i> Related to: @message.RelatedTask.Title
+                                                    </small>
+                                                }
+                                            </div>
+                                        </div>
+                                        <div class="d-flex gap-1">
+                                            <a asp-action="Details" asp-route-id="@message.Id" class="btn btn-outline-primary btn-sm">View</a>
+                                            @if (message.SenderUserId == User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value)
+                                            {
+                                                <a asp-action="Delete" asp-route-id="@message.Id" class="btn btn-outline-danger btn-sm">Delete</a>
+                                            }
+                                            else
+                                            {
+                                                <a asp-action="Reply" asp-route-id="@message.Id" class="btn btn-outline-success btn-sm">Reply</a>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-center py-5">
+                            <i class="bi bi-envelope display-1 text-muted"></i>
+                            <h3 class="text-muted">No messages</h3>
+                            <p class="text-muted">You don't have any messages yet.</p>
+                            <a asp-action="Create" class="btn btn-primary">Send Your First Message</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<style>
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+.main-content {
+    width: 100%;
+    padding: 2rem;
+    background-color: #f8f9fa;
+}
+
+.content-header {
+    margin-bottom: 2rem;
+}
+
+.content-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.content-subtitle {
+    color: #6c757d;
+    margin-bottom: 0;
+}
+
+.content-body {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Ensure footer spans full width */
+footer {
+    width: 100% !important;
+    margin-left: 0 !important;
+    position: relative !important;
+    clear: both !important;
+}
+
+@@media (max-width: 768px) {
+    .main-content {
+        padding: 1rem;
+    }
+}
+</style>
+}

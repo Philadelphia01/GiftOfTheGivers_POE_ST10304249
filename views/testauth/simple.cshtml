@@ -1,0 +1,47 @@
+@{
+    ViewData["Title"] = "Simple Test";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Registration Test</title>
+</head>
+<body>
+    <h1>Simple Registration Test</h1>
+    
+    <form method="post" action="/Identity/Account/Register">
+        <div>
+            <label>Full Name:</label>
+            <input type="text" name="Input.FullName" value="Test User" required />
+        </div>
+        
+        <div>
+            <label>Email:</label>
+            <input type="email" name="Input.Email" value="test@example.com" required />
+        </div>
+        
+        <div>
+            <label>Password:</label>
+            <input type="password" name="Input.Password" value="Test123!" required />
+        </div>
+        
+        <div>
+            <label>Confirm Password:</label>
+            <input type="password" name="Input.ConfirmPassword" value="Test123!" required />
+        </div>
+        
+        <button type="submit">Submit</button>
+    </form>
+    
+    <div>
+        <h2>Test with cURL:</h2>
+        <pre>
+curl -X POST http://localhost:5182/Identity/Account/Register \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "Input.FullName=Test User&Input.Email=test@example.com&Input.Password=Test123!&Input.ConfirmPassword=Test123!"
+        </pre>
+    </div>
+</body>
+</html>

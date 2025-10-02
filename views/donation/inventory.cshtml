@@ -1,0 +1,116 @@
+@model IEnumerable<dynamic>
+
+@{
+    ViewData["Title"] = "Donation Inventory";
+}
+
+<div class="container my-4">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h3 m-0">Donation Inventory</h1>
+        <a asp-action="Index" class="btn btn-outline-primary rounded-pill">Back to Donations</a>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">Resource Summary</h5>
+        </div>
+        <div class="card-body p-0">
+            @if (Model.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Resource Type</th>
+                                <th class="text-center">Total Quantity</th>
+                                <th class="text-center">Pending</th>
+                                <th class="text-center">Approved</th>
+                                <th class="text-center">Distributed</th>
+                                <th class="text-center">Available</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                var available = item.TotalQuantity - item.DistributedQuantity;
+                                <tr>
+                                    <td>
+                                        <strong>@item.ResourceType</strong>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="badge bg-primary">@item.TotalQuantity</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="badge bg-warning">@item.PendingQuantity</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="badge bg-info">@item.ApprovedQuantity</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="badge bg-success">@item.DistributedQuantity</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="badge bg-@(available > 0 ? "success" : "danger")">@available</span>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="text-center py-5">
+                    <i class="bi bi-box display-1 text-muted"></i>
+                    <h3 class="text-muted">No inventory data</h3>
+                    <p class="text-muted">There are no donations in the system yet.</p>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <i class="bi bi-clock text-warning display-4"></i>
+                    <h5 class="card-title">Pending Approval</h5>
+                    <p class="card-text">@Model.Sum(m => m.PendingQuantity) items</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <i class="bi bi-check-circle text-info display-4"></i>
+                    <h5 class="card-title">Approved</h5>
+                    <p class="card-text">@Model.Sum(m => m.ApprovedQuantity) items</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <i class="bi bi-truck text-success display-4"></i>
+                    <h5 class="card-title">Distributed</h5>
+                    <p class="card-text">@Model.Sum(m => m.DistributedQuantity) items</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

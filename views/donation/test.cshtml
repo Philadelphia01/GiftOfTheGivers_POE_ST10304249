@@ -1,0 +1,36 @@
+@{
+    ViewData["Title"] = "Test Donation Form";
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Simple Test Form</h3>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="/Donation/Create">
+                        <div class="mb-3">
+                            <label class="form-label">Resource Type</label>
+                            <input type="text" name="ResourceType" class="form-control" value="Test Food" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Quantity</label>
+                            <input type="number" name="Quantity" class="form-control" value="5" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Date</label>
+                            <input type="date" name="DateDonated" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Note</label>
+                            <textarea name="Note" class="form-control">Test donation</textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Test Donation</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

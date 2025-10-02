@@ -1,0 +1,67 @@
+@page
+@model DisasterAlleviationFoundation.Areas.Identity.Pages.Account.RegisterModel
+@{
+    ViewData["Title"] = "Register";
+    ViewData["BodyClass"] = "auth";
+}
+
+<div class="login-container">
+    <div class="login-card">
+        <!-- Left Side - Image -->
+        <div class="login-image-section">
+            <img src="~/images/happies.jpg" asp-append-version="true" alt="Register Hero" class="login-hero-image" />
+        </div>
+        
+        <!-- Right Side - Form -->
+        <div class="login-form-section">
+            <div class="login-form-header">
+                <h1 class="login-title">Sign Up</h1>
+                <div class="social-login">
+                    <div class="social-icon facebook">
+                        <i class="bi bi-facebook"></i>
+                    </div>
+                    <div class="social-icon twitter">
+                        <i class="bi bi-twitter"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <form id="registerForm" method="post" novalidate class="login-form">
+                <div asp-validation-summary="All" class="text-danger mb-3" role="alert"></div>
+                <input type="hidden" asp-for="ReturnUrl" />
+                @Html.AntiForgeryToken()
+                
+                <div class="form-field">
+                    <label for="Input_FullName" asp-for="Input.FullName" class="field-label">FULL NAME</label>
+                    <input id="Input_FullName" name="Input.FullName" asp-for="Input.FullName" class="field-input" autocomplete="name" aria-required="true" placeholder="Full Name" />
+                    <span asp-validation-for="Input.FullName" class="text-danger"></span>
+                </div>
+                
+                <div class="form-field">
+                    <label for="Input_Email" asp-for="Input.Email" class="field-label">EMAIL</label>
+                    <input id="Input_Email" name="Input.Email" asp-for="Input.Email" class="field-input" autocomplete="username" aria-required="true" placeholder="Email" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                
+                <div class="form-field">
+                    <label for="Input_Password" asp-for="Input.Password" class="field-label">PASSWORD</label>
+                    <input id="Input_Password" name="Input.Password" asp-for="Input.Password" class="field-input" autocomplete="new-password" aria-required="true" placeholder="Password" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                
+                <div class="form-field">
+                    <label for="Input_ConfirmPassword" asp-for="Input.ConfirmPassword" class="field-label">CONFIRM PASSWORD</label>
+                    <input id="Input_ConfirmPassword" name="Input.ConfirmPassword" asp-for="Input.ConfirmPassword" class="field-input" autocomplete="new-password" aria-required="true" placeholder="Confirm Password" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+                
+                <button id="registerSubmit" type="submit" class="login-button">Sign Up</button>
+                
+                <div class="signup-link">
+                    <span>Already have an account? </span>
+                    <a href="/Identity/Account/Login" class="signup-text">Sign In</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

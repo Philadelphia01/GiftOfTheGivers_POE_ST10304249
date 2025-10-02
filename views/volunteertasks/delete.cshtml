@@ -1,0 +1,18 @@
+@model DisasterAlleviationFoundation.Models.VolunteerTask
+@{
+    ViewData["Title"] = "Delete Task";
+}
+
+<section class="container my-4">
+    <h1 class="h4 mb-3">Delete Task</h1>
+    <div class="card card-donation p-4">
+        <p>Are you sure you want to delete <strong>@Model.Title</strong>?</p>
+        <form asp-action="Delete" method="post">
+            <input type="hidden" asp-for="Id" />
+            <button type="submit" class="btn btn-danger rounded-pill">Delete</button>
+            <a class="btn btn-outline-secondary rounded-pill" href="@Url.Action("Index")">Cancel</a>
+        </form>
+    </div>
+</section>
+
+

@@ -1,0 +1,37 @@
+@model DisasterAlleviationFoundation.Models.DisasterReport
+@{
+    ViewData["Title"] = "Report Incident";
+}
+
+<section class="container my-4">
+    <h1 class="h4 mb-3">Report Incident</h1>
+    <div class="card card-elevated p-4" style="background:#FFF8F2;">
+        <form asp-action="Create" method="post" class="row g-3">
+            @Html.AntiForgeryToken()
+            <div class="col-md-6">
+                <label asp-for="Location" class="form-label small"></label>
+                <input asp-for="Location" class="form-control contact-input" />
+                <span asp-validation-for="Location" class="text-danger small"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="DisasterType" class="form-label small"></label>
+                <input asp-for="DisasterType" class="form-control contact-input" />
+                <span asp-validation-for="DisasterType" class="text-danger small"></span>
+            </div>
+
+            <div class="col-12">
+                <label asp-for="Description" class="form-label small"></label>
+                <textarea asp-for="Description" class="form-control contact-input" rows="3"></textarea>
+                <span asp-validation-for="Description" class="text-danger small"></span>
+            </div>
+            <div class="col-12 d-flex gap-2">
+                <button type="submit" class="btn btn-orange rounded-pill">Submit Report</button>
+                <a class="btn btn-outline-secondary rounded-pill" href="@Url.Action("Index")">Cancel</a>
+            </div>
+        </form>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

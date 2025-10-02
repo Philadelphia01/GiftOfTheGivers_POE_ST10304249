@@ -1,0 +1,158 @@
+@model DisasterAlleviationFoundation.Models.VolunteerTask
+
+@{
+    ViewData["Title"] = "Task Details";
+}
+
+<div class="container my-4">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0">@Model.Title</h4>
+                    <div class="d-flex gap-2">
+                        <span class="badge bg-@(Model.Priority == "Critical" ? "danger" : Model.Priority == "High" ? "warning" : Model.Priority == "Medium" ? "info" : "secondary")">
+                            @Model.Priority
+                        </span>
+                        <span class="badge bg-@(Model.Status == "Open" ? "success" : "primary")">@Model.Status</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5>Description</h5>
+                    <p class="mb-4">@(Model.Description ?? "No description provided")</p>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6><i class="bi bi-calendar"></i> Start Date</h6>
+                            <p>@(Model.StartAt?.ToString("MMM dd, yyyy HH:mm") ?? "Not specified")</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6><i class="bi bi-calendar-check"></i> End Date</h6>
+                            <p>@(Model.EndAt?.ToString("MMM dd, yyyy HH:mm") ?? "Not specified")</p>
+                        </div>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(Model.Location))
+                    {
+                        <div class="mb-3">
+                            <h6><i class="bi bi-geo-alt"></i> Location</h6>
+                            <p>@Model.Location</p>
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.Category))
+                    {
+                        <div class="mb-3">
+                            <h6><i class="bi bi-tag"></i> Category</h6>
+                            <p>@Model.Category</p>
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.RequiredSkills))
+                    {
+                        <div class="mb-3">
+                            <h6><i class="bi bi-person-check"></i> Required Skills</h6>
+                            <p>@Model.RequiredSkills</p>
+                        </div>
+                    }
+
+                    <div class="mb-3">
+                        <h6><i class="bi bi-people"></i> Volunteers</h6>
+                        <p>@Model.CurrentVolunteerCount / @Model.MaxVolunteers volunteers</p>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" 
+                                 style="width: @((Model.CurrentVolunteerCount * 100) / Model.MaxVolunteers)%">
+                            </div>
+                        </div>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(Model.Notes))
+                    {
+                        <div class="mb-3">
+                            <h6><i class="bi bi-sticky"></i> Notes</h6>
+                            <p>@Model.Notes</p>
+                        </div>
+                    }
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex gap-2">
+                        <a asp-action="Index" class="btn btn-outline-secondary">Back to Tasks</a>
+                        @if (Model.Status == "Open" && Model.CurrentVolunteerCount < Model.MaxVolunteers)
+                        {
+                            <form asp-action="Join" method="post" class="d-inline">
+                                <input type="hidden" name="id" value="@Model.Id" />
+                                <button type="submit" class="btn btn-success">Join This Task</button>
+                            </form>
+                        }
+                        else if (Model.AssignedVolunteerId == User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value)
+                        {
+                            <form asp-action="Leave" method="post" class="d-inline">
+                                <input type="hidden" name="id" value="@Model.Id" />
+                                <button type="submit" class="btn btn-warning">Leave Task</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <button class="btn btn-secondary" disabled>Task Full</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Task Information</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <strong>Created:</strong><br>
+                        <small class="text-muted">@Model.CreatedAt.ToString("MMM dd, yyyy")</small>
+                    </div>
+                    
+                    @if (Model.AssignedVolunteer != null)
+                    {
+                        <div class="mb-3">
+                            <strong>Assigned Volunteer:</strong><br>
+                            <small>@Model.AssignedVolunteer.FullName</small>
+                        </div>
+                    }
+                    
+                    @if (Model.CreatedByUser != null)
+                    {
+                        <div class="mb-3">
+                            <strong>Created By:</strong><br>
+                            <small>@Model.CreatedByUser.FullName</small>
+                        </div>
+                    }
+
+                    <div class="d-grid gap-2">
+                        <a asp-action="Create" asp-controller="VolunteerCommunication" asp-route-taskId="@Model.Id" 
+                           class="btn btn-outline-primary btn-sm">
+                            <i class="bi bi-envelope"></i> Send Message
+                        </a>
+                        <a asp-action="Index" asp-controller="VolunteerTasks" class="btn btn-outline-info btn-sm">
+                            <i class="bi bi-list-task"></i> My Tasks
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
