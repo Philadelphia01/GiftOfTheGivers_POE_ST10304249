@@ -44,6 +44,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/RC_Student_Lab/Downloads/DisasterAlleviationFoundation/views/admindashboard/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = dmlld3NcYWRtaW5kYXNoYm9hcmRcaW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/RC_Student_Lab/Downloads/DisasterAlleviationFoundation/views/disasterreport/create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = dmlld3NcZGlzYXN0ZXJyZXBvcnRcY3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
