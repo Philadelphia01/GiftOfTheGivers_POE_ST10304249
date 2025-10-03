@@ -235,12 +235,6 @@ dotnet DisasterAlleviationFoundation.dll
 3. **Enter Admin Credentials**:
    - **Email**: `admin@disasterrelief.com`
    - **Password**: `Admin123!`
-4. **Automatic Redirection**: Upon successful login, you'll be automatically redirected to the **Admin Dashboard**
-5. **Admin Dashboard Features**:
-   - View system statistics (users, donations, reports, tasks)
-   - Access "View Incidents", "View Donations", "Manage Volunteers" buttons
-   - See recent activity feed
-   - Use "View Website" button to access the main site
 
 ### **👥 How to Login as Regular User**
 1. **Navigate to the Application**: Open `http://localhost:5186` in your browser
@@ -249,7 +243,6 @@ dotnet DisasterAlleviationFoundation.dll
    - Fill in your details:
      - **Full Name**: Your full name
      - **Email**: Your email address
-     - **Address**: Your physical address
      - **Password**: Choose a secure password
      - **Confirm Password**: Repeat your password
    - Click "Register" to create your account
@@ -266,24 +259,61 @@ dotnet DisasterAlleviationFoundation.dll
 
 ### **🧪 Testing User Isolation**
 1. **Create Multiple Test Accounts**:
+ - **Fullname : Test user
+ - ** Email : testuser@gmail.com
+ - ** password: 123456
+
+
+### **🔧 Pipeline Build Issues & Solutions**
+
+#### **Why the Pipeline Build Was Failing**
+
+The Azure DevOps pipeline encountered several common issues that are typical in academic/student environments:
+
+1. **🚫 No Hosted Parallelism Grant**
    ```
-   User 1: john.doe@example.com / TestPass123!
-   User 2: jane.smith@example.com / TestPass123!
-   User 3: mike.wilson@example.com / TestPass123!
-   Test User: testuser@gmail.com / 123456
+   Error: "No hosted parallelism has been purchased or granted"
    ```
-   
-   **Sample Test User Details**:
-   - **Full Name**: Test User
-   - **Email**: testuser@gmail.com
-   - **Password**: 123456
-2. **Test Data Separation**:
-   - Login as **User 1**, create donations and reports
-   - Login as **User 2**, verify you cannot see User 1's data
-   - Try accessing other users' data via URL manipulation (should be blocked)
-3. **Admin Testing**:
-   - Login as **Admin**, verify you can see all users' data
-   - Test admin-only features like inventory management
+   - **Cause**: Free Azure DevOps accounts have limited parallel job execution
+   - **Solution**: Created alternative pipeline configurations that work within free tier limits
+   - **Files Created**: 
+     - `azure-pipelines-assignment.yml` (single job, Microsoft-hosted agents)
+     - `azure-pipelines-local.yml` (self-hosted agent option)
+
+2. **⚠️ Agent Pool Limitations**
+   ```
+   Error: "No agent found in pool Default which satisfies the specified demands"
+   ```
+   - **Cause**: Default agent pool may not be available or configured
+   - **Solution**: Used `ubuntu-latest` Microsoft-hosted agents instead
+
+3. **📁 File Visibility Issues**
+   ```
+   Error: "Could not find file 'DisasterAlleviationFoundation.csproj'"
+   ```
+   - **Cause**: Pipeline couldn't locate the project file in the expected location
+   - **Solution**: Updated `projectPath` variable to correct path
+
+4. **🔄 Parallelism Request Process**
+   - **Free Grant**: Available at https://aka.ms/azpipelines-parallelism-request
+   - **Alternative**: Use single-job pipelines (provided in repository)
+   - **Documentation**: See `AZURE_PARALLELISM_EVIDENCE.md` for detailed analysis
+
+#### **📋 Pipeline Configuration Options**
+
+| Pipeline File | Purpose | Agent Type | Parallelism |
+|---------------|---------|------------|-------------|
+| `azure-pipelines.yml` | Original complex pipeline | Microsoft-hosted | Requires grant |
+| `azure-pipelines-assignment.yml` | **Recommended for assignments** | Microsoft-hosted | Single job |
+| `azure-pipelines-local.yml` | Self-hosted agent option | Self-hosted | No limits |
+
+#### **✅ Working Pipeline Features**
+- ✅ Code compilation and build
+- ✅ Unit test execution (simulated)
+- ✅ Code quality analysis (simulated)
+- ✅ Deployment simulation
+- ✅ Artifact publishing
+- ✅ Build status reporting
 
 ### **🎯 Login Troubleshooting**
 - **Forgot Admin Password**: The admin password is `Admin123!` (case-sensitive)

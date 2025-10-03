@@ -31,17 +31,17 @@
             min-height: 100vh;
         }
 
+        /* Dark Blue Sidebar - Matching Reference */
         .sidebar {
             width: 280px;
-            background: white;
-            border-right: 1px solid #e2e8f0;
-            padding: 2rem 0;
+            background: #1e3a8a;
+            color: white;
+            padding: 0;
         }
 
         .sidebar-header {
-            padding: 0 2rem 2rem;
-            border-bottom: 1px solid #e2e8f0;
-            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .logo {
@@ -50,7 +50,7 @@
             gap: 0.75rem;
             font-size: 1.25rem;
             font-weight: 700;
-            color: #0f172a;
+            color: white;
         }
 
         .logo-icon {
@@ -66,28 +66,29 @@
 
         .nav-menu {
             list-style: none;
-            padding: 0 1rem;
+            padding: 1rem 0;
         }
 
         .nav-item {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
         }
 
         .nav-link {
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            padding: 0.75rem 1rem;
-            color: #64748b;
+            padding: 0.75rem 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            border-radius: 8px;
             transition: all 0.2s;
             font-weight: 500;
+            border-left: 3px solid transparent;
         }
 
         .nav-link:hover, .nav-link.active {
-            background-color: #f1f5f9;
-            color: #3b82f6;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-left-color: #60a5fa;
         }
 
         .nav-link i {
@@ -95,31 +96,63 @@
             text-align: center;
         }
 
+        /* Main Content Area */
         .main-content {
             flex: 1;
-            padding: 2rem;
+            background: #f8fafc;
             overflow-x: hidden;
         }
 
+        /* Header with Search and User Profile */
         .header {
-            display: flex;
-            justify-content: between;
-            align-items: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
+            background: white;
+            padding: 1rem 2rem;
             border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .header-left h1 {
-            font-size: 1.875rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 0.25rem;
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
-        .header-left p {
+        .menu-toggle {
+            background: none;
+            border: none;
+            font-size: 1.25rem;
             color: #64748b;
-            margin: 0;
+            cursor: pointer;
+        }
+
+        .search-bar {
+            position: relative;
+            width: 300px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.5rem 1rem 0.5rem 2.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            background: #f8fafc;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            background: white;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64748b;
         }
 
         .header-right {
@@ -128,7 +161,24 @@
             gap: 1rem;
         }
 
-        .user-menu {
+        .notification-icon, .message-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .notification-icon:hover, .message-icon:hover {
+            background: #e2e8f0;
+        }
+
+        .user-profile {
             display: flex;
             align-items: center;
             gap: 0.75rem;
@@ -140,13 +190,13 @@
             transition: all 0.2s;
         }
 
-        .user-menu:hover {
+        .user-profile:hover {
             background-color: #f8fafc;
         }
 
         .user-avatar {
-            width: 32px;
-            height: 32px;
+            width: 40px;
+            height: 40px;
             background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
             border-radius: 50%;
             display: flex;
@@ -156,127 +206,37 @@
             font-weight: 600;
         }
 
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .dashboard-card {
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: all 0.2s;
-        }
-
-        .dashboard-card:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border-color: #cbd5e1;
-        }
-
-        .card-header {
+        .user-info {
             display: flex;
-            justify-content: between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
+            flex-direction: column;
         }
 
-        .card-title {
-            font-size: 0.875rem;
+        .user-name {
             font-weight: 600;
-            color: #64748b;
-            text-transform: uppercase;
-            letter-spacing: 0.025em;
-        }
-
-        .card-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.25rem;
-        }
-
-        .icon-incidents { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); }
-        .icon-donations { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
-        .icon-volunteers { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
-
-        .card-value {
-            font-size: 2rem;
-            font-weight: 700;
             color: #0f172a;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-change {
             font-size: 0.875rem;
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
         }
 
-        .change-positive { color: #10b981; }
-        .change-neutral { color: #64748b; }
-
-        .main-actions {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
+        .user-role {
+            color: #64748b;
+            font-size: 0.75rem;
         }
 
-        .action-card {
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
+        /* Dashboard Content */
+        .dashboard-content {
             padding: 2rem;
-            text-align: center;
-            transition: all 0.3s;
-            text-decoration: none;
-            color: inherit;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 2rem;
         }
 
-        .action-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .action-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.75rem;
-            color: white;
-        }
-
-        .action-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #0f172a;
-            margin-bottom: 0.5rem;
-        }
-
-        .action-description {
-            color: #64748b;
-            font-size: 0.875rem;
-        }
-
-        .recent-section {
+        /* Section Cards */
+        .section-card {
             background: white;
-            border: 1px solid #e2e8f0;
             border-radius: 12px;
             padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .section-title {
@@ -284,129 +244,324 @@
             font-weight: 600;
             color: #0f172a;
             margin-bottom: 1rem;
-        }
-
-        .recent-item {
             display: flex;
             align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title i {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+
+        /* Overview Section - Top Left */
+        .overview-section {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .overview-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .overview-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.25rem;
+        }
+
+        .overview-label {
+            color: #64748b;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Quick Actions Section - Top Right */
+        .quick-actions-section {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .quick-actions-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        .quick-action-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s;
+            border: 1px solid #e2e8f0;
+        }
+
+        .quick-action-card:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .action-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-size: 1rem;
+            color: white;
+        }
+
+        .action-title {
+            font-weight: 600;
+            color: #0f172a;
+            font-size: 0.875rem;
+        }
+
+        /* Users Section - Bottom Left */
+        .users-section {
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        .users-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .users-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .users-card:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Timeline Section - Bottom Right */
+        .timeline-section {
+            grid-column: 2;
+            grid-row: 2;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
             gap: 1rem;
             padding: 0.75rem 0;
             border-bottom: 1px solid #f1f5f9;
         }
 
-        .recent-item:last-child {
+        .timeline-item:last-child {
             border-bottom: none;
         }
 
-        .recent-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-            font-size: 0.875rem;
+        .timeline-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-top: 0.5rem;
+            flex-shrink: 0;
         }
 
-        .recent-content {
+        .timeline-dot.red { background: #ef4444; }
+        .timeline-dot.blue { background: #3b82f6; }
+        .timeline-dot.green { background: #10b981; }
+
+        .timeline-content {
             flex: 1;
         }
 
-        .recent-title {
-            font-weight: 500;
+        .timeline-text {
             color: #0f172a;
             font-size: 0.875rem;
+            margin-bottom: 0.25rem;
         }
 
-        .recent-subtitle {
+        .timeline-time {
             color: #64748b;
             font-size: 0.75rem;
         }
 
-        .recent-value {
-            font-weight: 600;
-            color: #0f172a;
-            font-size: 0.875rem;
-        }
+        /* Color Classes */
+        .icon-blue { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); }
+        .icon-green { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+        .icon-orange { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
+        .icon-purple { background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); }
+        .icon-red { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); }
+        .icon-teal { background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%); }
 
-        .btn-logout {
-            background: #ef4444;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
+        /* Responsive Design */
+        @@media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                position: fixed;
+                top: 0;
+                left: -100%;
+                z-index: 1000;
+                transition: left 0.3s ease;
+            }
 
-        .btn-logout:hover {
-            background: #dc2626;
-        }
+            .sidebar.open {
+                left: 0;
+            }
 
-        .btn-website {
-            background: #6366f1;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.2s;
-        }
+            .main-content {
+                margin-left: 0;
+            }
 
-        .btn-website:hover {
-            background: #4f46e5;
-            color: white;
-            text-decoration: none;
+            .search-bar {
+                width: 200px;
+            }
+
+            .dashboard-content {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto auto;
+            }
+
+            .overview-section {
+                grid-column: 1;
+                grid-row: 1;
+            }
+
+            .quick-actions-section {
+                grid-column: 1;
+                grid-row: 2;
+            }
+
+            .users-section {
+                grid-column: 1;
+                grid-row: 3;
+            }
+
+            .timeline-section {
+                grid-column: 1;
+                grid-row: 4;
+            }
+
+            .overview-grid,
+            .quick-actions-grid,
+            .users-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
 
 <div class="admin-container">
-    <!-- Sidebar -->
+    <!-- Dark Blue Sidebar -->
     <div class="sidebar">
         <div class="sidebar-header">
             <div class="logo">
                 <div class="logo-icon">
                     <i class="bi bi-shield-check"></i>
                 </div>
-                Admin Panel
+                Disaster Relief
             </div>
         </div>
         
         <ul class="nav-menu">
             <li class="nav-item">
                 <a href="#" class="nav-link active">
-                    <i class="bi bi-grid"></i>
-                    Dashboard
+                    <i class="bi bi-house"></i>
+                    Home
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Index", "Volunteer")" class="nav-link">
+                    <i class="bi bi-people"></i>
+                    Users
                 </a>
             </li>
             <li class="nav-item">
                 <a href="@Url.Action("Index", "DisasterReport")" class="nav-link">
-                    <i class="bi bi-exclamation-triangle"></i>
-                    Incidents
+                    <i class="bi bi-book"></i>
+                    Reports
                 </a>
             </li>
             <li class="nav-item">
                 <a href="@Url.Action("Index", "Donation")" class="nav-link">
-                    <i class="bi bi-heart"></i>
+                    <i class="bi bi-cart"></i>
                     Donations
                 </a>
             </li>
             <li class="nav-item">
                 <a href="@Url.Action("Index", "VolunteerTasks")" class="nav-link">
-                    <i class="bi bi-people"></i>
-                    Volunteers
+                    <i class="bi bi-people-fill"></i>
+                    Groups
                 </a>
             </li>
             <li class="nav-item">
-                <a href="@Url.Action("Inventory", "Donation")" class="nav-link">
-                    <i class="bi bi-box"></i>
-                    Inventory
+                <a href="@Url.Action("Index", "VolunteerCommunication")" class="nav-link">
+                    <i class="bi bi-diagram-3"></i>
+                    Communications
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Index", "TaskBrowse")" class="nav-link">
+                    <i class="bi bi-gear"></i>
+                    Tasks
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="bi bi-bell"></i>
+                    Notifications
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="bi bi-graph-up"></i>
+                    Reports
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="bi bi-gear"></i>
+                    Account & Settings
+                    <i class="bi bi-chevron-right ms-auto"></i>
                 </a>
             </li>
         </ul>
@@ -414,147 +569,179 @@
 
     <!-- Main Content -->
     <div class="main-content">
-        <!-- Header -->
+        <!-- Header with Search and User Profile -->
         <div class="header">
             <div class="header-left">
-                <h1>Analytics</h1>
-                <p>Welcome back, here's what's happening with your organization today.</p>
+                <button class="menu-toggle">
+                    <i class="bi bi-list"></i>
+                </button>
+                <div class="search-bar">
+                    <i class="bi bi-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search">
+                </div>
             </div>
             <div class="header-right">
-                <a href="@Url.Action("Index", "Home", new { viewWebsite = true })" class="btn-website">
-                    <i class="bi bi-globe"></i> View Website
-                </a>
-                <div class="user-menu">
+                <div class="message-icon">
+                    <i class="bi bi-chat"></i>
+                </div>
+                <div class="notification-icon">
+                    <i class="bi bi-bell"></i>
+                </div>
+                <div class="user-profile">
                     <div class="user-avatar">A</div>
-                    <span>@(User.Identity?.Name ?? "Admin")</span>
+                    <div class="user-info">
+                        <div class="user-name">@(User.Identity?.Name ?? "Admin")</div>
+                        <div class="user-role">Administrator</div>
+                    </div>
+                    <i class="bi bi-chevron-down"></i>
                 </div>
                 <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="~/" method="post" style="display:inline;">
-                    <button type="submit" class="btn-logout">
+                    <button type="submit" style="background: #ef4444; color: white; border: none; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 500; cursor: pointer;">
                         <i class="bi bi-box-arrow-right"></i> Logout
                     </button>
                 </form>
             </div>
         </div>
 
-        <!-- Statistics Cards -->
-        <div class="dashboard-grid">
-            <div class="dashboard-card">
-                <div class="card-header">
-                    <div class="card-title">Total Users</div>
-                    <div class="card-icon icon-incidents">
-                        <i class="bi bi-people"></i>
-                    </div>
-                </div>
-                <div class="card-value">@ViewBag.TotalUsers</div>
-                <div class="card-change change-positive">
-                    <i class="bi bi-arrow-up"></i> +8% this week
-                </div>
-            </div>
-
-            <div class="dashboard-card">
-                <div class="card-header">
-                    <div class="card-title">Total Donations</div>
-                    <div class="card-icon icon-donations">
-                        <i class="bi bi-heart-fill"></i>
-                    </div>
-                </div>
-                <div class="card-value">@ViewBag.TotalDonations</div>
-                <div class="card-change change-positive">
-                    <i class="bi bi-arrow-up"></i> +12% this month
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Overview Section - Top Left Card -->
+            <div class="section-card overview-section">
+                <h2 class="section-title">Overview</h2>
+                <div class="overview-grid">
+                    <a href="@Url.Action("Index", "Volunteer")" class="overview-card">
+                        <div class="overview-value">@ViewBag.TotalUsers</div>
+                        <div class="overview-label">Active users</div>
+                    </a>
+                    <a href="@Url.Action("Index", "Donation")" class="overview-card">
+                        <div class="overview-value">@ViewBag.TotalDonations</div>
+                        <div class="overview-label">Total donations</div>
+                    </a>
+                    <a href="@Url.Action("Index", "VolunteerTasks")" class="overview-card">
+                        <div class="overview-value">@ViewBag.TotalVolunteerTasks</div>
+                        <div class="overview-label">Active tasks</div>
+                    </a>
+                    <a href="#" class="overview-card">
+                        <div class="overview-value">85%</div>
+                        <div class="overview-label">Completion rate</div>
+                    </a>
                 </div>
             </div>
 
-            <div class="dashboard-card">
-                <div class="card-header">
-                    <div class="card-title">Incident Reports</div>
-                    <div class="card-icon icon-incidents">
-                        <i class="bi bi-exclamation-triangle-fill"></i>
-                    </div>
-                </div>
-                <div class="card-value">@ViewBag.TotalDisasterReports</div>
-                <div class="card-change change-neutral">
-                    <i class="bi bi-dash"></i> No change
-                </div>
-            </div>
-
-            <div class="dashboard-card">
-                <div class="card-header">
-                    <div class="card-title">Active Tasks</div>
-                    <div class="card-icon icon-volunteers">
-                        <i class="bi bi-list-task"></i>
-                    </div>
-                </div>
-                <div class="card-value">@ViewBag.TotalVolunteerTasks</div>
-                <div class="card-change change-positive">
-                    <i class="bi bi-arrow-up"></i> +5% today
-                </div>
-            </div>
-        </div>
-
-        <!-- Main Action Cards -->
-        <div class="main-actions">
-            <a href="@Url.Action("Index", "DisasterReport")" class="action-card">
-                <div class="action-icon icon-incidents">
-                    <i class="bi bi-exclamation-triangle-fill"></i>
-                </div>
-                <div class="action-title">View Incidents</div>
-                <div class="action-description">Manage and monitor disaster reports</div>
-            </a>
-            
-            <a href="@Url.Action("Index", "Donation")" class="action-card">
-                <div class="action-icon icon-donations">
-                    <i class="bi bi-heart-fill"></i>
-                </div>
-                <div class="action-title">View Donations</div>
-                <div class="action-description">Track donations and distribution</div>
-            </a>
-            
-            <a href="@Url.Action("Index", "VolunteerTasks")" class="action-card">
-                <div class="action-icon icon-volunteers">
-                    <i class="bi bi-people-fill"></i>
-                </div>
-                <div class="action-title">Manage Volunteers</div>
-                <div class="action-description">Coordinate volunteer tasks and activities</div>
-            </a>
-        </div>
-
-        <!-- Recent Activity -->
-        <div class="recent-section">
-            <h2 class="section-title">Recent Activity</h2>
-            
-            @if (ViewBag.RecentDonations != null)
-            {
-                @foreach (dynamic donation in ((IEnumerable<dynamic>)ViewBag.RecentDonations).Take(3))
-                {
-                    <div class="recent-item">
-                        <div class="recent-avatar icon-donations">D</div>
-                        <div class="recent-content">
-                            <div class="recent-title">@donation.DonorUser?.FullName donated @donation.ResourceType</div>
-                            <div class="recent-subtitle">@donation.DateDonated.ToString("MMM dd, yyyy")</div>
+            <!-- Quick Actions Section - Top Right Card -->
+            <div class="section-card quick-actions-section">
+                <h2 class="section-title">Quick actions</h2>
+                <div class="quick-actions-grid">
+                    <a href="@Url.Action("Create", "Volunteer")" class="quick-action-card">
+                        <div class="action-icon icon-blue">
+                            <i class="bi bi-person-plus"></i>
                         </div>
-                        <div class="recent-value">Qty: @donation.Quantity</div>
-                    </div>
-                }
-            }
-            
-            @if (ViewBag.RecentReports != null)
-            {
-                @foreach (dynamic report in ((IEnumerable<dynamic>)ViewBag.RecentReports).Take(2))
-                {
-                    <div class="recent-item">
-                        <div class="recent-avatar icon-incidents">R</div>
-                        <div class="recent-content">
-                            <div class="recent-title">@report.DisasterType reported in @report.Location</div>
-                            <div class="recent-subtitle">@report.DateReported.ToString("MMM dd, yyyy")</div>
+                        <div class="action-title">Add user</div>
+                    </a>
+                    <a href="@Url.Action("Create", "DisasterReport")" class="quick-action-card">
+                        <div class="action-icon icon-green">
+                            <i class="bi bi-file-earmark-plus"></i>
                         </div>
-                        <div class="recent-value">New</div>
-                    </div>
+                        <div class="action-title">Add report</div>
+                    </a>
+                    <a href="@Url.Action("Index", "VolunteerTasks")" class="quick-action-card">
+                        <div class="action-icon icon-orange">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                        <div class="action-title">Add group</div>
+                    </a>
+                    <a href="@Url.Action("Create", "Donation")" class="quick-action-card">
+                        <div class="action-icon icon-purple">
+                            <i class="bi bi-list-ul"></i>
+                        </div>
+                        <div class="action-title">Add category</div>
+                    </a>
+                    <a href="@Url.Action("Index", "Home")" class="quick-action-card">
+                        <div class="action-icon icon-teal">
+                            <i class="bi bi-display"></i>
+                        </div>
+                        <div class="action-title">Portal</div>
+                    </a>
+                    <a href="@Url.Action("Inventory", "Donation")" class="quick-action-card">
+                        <div class="action-icon icon-red">
+                            <i class="bi bi-box-arrow-in-down"></i>
+                        </div>
+                        <div class="action-title">Import-Export</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Users Section - Bottom Left Card -->
+            <div class="section-card users-section">
+                <h2 class="section-title">Users <i class="bi bi-box-arrow-up-right"></i></h2>
+                <div class="users-grid">
+                    <a href="@Url.Action("Index", "Volunteer")" class="users-card">
+                        <div class="overview-value">@ViewBag.TotalUsers</div>
+                        <div class="overview-label">Total users</div>
+                    </a>
+                    <a href="@Url.Action("Index", "VolunteerTasks")" class="users-card">
+                        <div class="overview-value">@ViewBag.TotalVolunteers</div>
+                        <div class="overview-label">Volunteers</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Timeline Section - Bottom Right Card -->
+            <div class="section-card timeline-section">
+                <h2 class="section-title">Timeline <i class="bi bi-box-arrow-up-right"></i></h2>
+                
+                @if (ViewBag.RecentDonations != null)
+                {
+                    @foreach (dynamic donation in ((IEnumerable<dynamic>)ViewBag.RecentDonations).Take(3))
+                    {
+                        <div class="timeline-item">
+                            <div class="timeline-dot red"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-text">User @donation.DonorUser?.FullName donated @donation.ResourceType</div>
+                                <div class="timeline-time">@donation.DateDonated.ToString("MMM dd, yyyy 'at' HH:mm")</div>
+                            </div>
+                        </div>
+                    }
                 }
-            }
+                
+                @if (ViewBag.RecentReports != null)
+                {
+                    @foreach (dynamic report in ((IEnumerable<dynamic>)ViewBag.RecentReports).Take(2))
+                    {
+                        <div class="timeline-item">
+                            <div class="timeline-dot blue"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-text">@report.DisasterType reported in @report.Location</div>
+                                <div class="timeline-time">@report.DateReported.ToString("MMM dd, yyyy 'at' HH:mm")</div>
+                            </div>
+                        </div>
+                    }
+                }
+                
+                @if (ViewBag.RecentTasks != null)
+                {
+                    @foreach (dynamic task in ((IEnumerable<dynamic>)ViewBag.RecentTasks).Take(2))
+                    {
+                        <div class="timeline-item">
+                            <div class="timeline-dot green"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-text">Task "@task.Title" has been updated</div>
+                                <div class="timeline-time">@task.CreatedAt.ToString("MMM dd, yyyy 'at' HH:mm")</div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
         </div>
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Mobile menu toggle
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('.sidebar').classList.toggle('open');
+    });
+</script>
 </body>
 </html>

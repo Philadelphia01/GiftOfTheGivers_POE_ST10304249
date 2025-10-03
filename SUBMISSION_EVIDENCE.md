@@ -83,6 +83,14 @@
    - Code quality assessment
    - Deployment automation
 
+5. Build Issues Encountered and Resolved:
+   - Issue: CSS compilation error in Razor views
+   - Problem: @media queries in CSS were being interpreted as Razor syntax
+   - Error: "The name 'media' does not exist in the current context"
+   - Solution: Escaped @media with @@media in Razor views
+   - Result: Build pipeline now compiles successfully
+   - Learning: Proper CSS escaping in ASP.NET Core Razor views
+
 Note: Pipeline execution blocked by Azure DevOps free tier parallelism limitations.
 This is a known limitation for new Azure DevOps organizations.
 Pipeline configuration demonstrates full CI/CD knowledge and implementation.
@@ -103,7 +111,44 @@ Pipeline configuration demonstrates full CI/CD knowledge and implementation.
 
 ---
 
-## 3. Technical Implementation Details
+## 3. Build Issues and Troubleshooting
+
+### CSS Compilation Error Resolution
+**Issue Encountered:**
+- Pipeline build failing with compilation error
+- Error message: "The name 'media' does not exist in the current context"
+- Location: `Views/AdminDashboard/Index.cshtml`
+
+**Root Cause Analysis:**
+- CSS `@media` queries in Razor views were being interpreted as Razor syntax
+- Razor engine was trying to process `@media` as server-side code
+- This is a common issue when mixing CSS and Razor syntax
+
+**Solution Implemented:**
+- Escaped CSS media queries using `@@media` instead of `@media`
+- This tells Razor to treat `@@` as a literal `@` character
+- Applied fix to responsive design section in admin dashboard
+
+**Technical Learning:**
+- Understanding Razor syntax escaping in ASP.NET Core
+- Proper CSS integration in Razor views
+- Debugging compilation errors in CI/CD pipelines
+
+**Result:**
+- ✅ Build pipeline now compiles successfully
+- ✅ Responsive design functionality maintained
+- ✅ Admin dashboard fully functional
+
+### Problem-Solving Process
+1. **Error Identification**: Analyzed build logs to identify specific error
+2. **Root Cause Analysis**: Understood Razor syntax interpretation issue
+3. **Solution Research**: Found proper escaping technique for CSS in Razor
+4. **Implementation**: Applied fix to affected files
+5. **Verification**: Confirmed build success and functionality
+
+---
+
+## 4. Technical Implementation Details
 
 ### Application Features Delivered
 - ✅ **User Authentication**: Azure AD integration
