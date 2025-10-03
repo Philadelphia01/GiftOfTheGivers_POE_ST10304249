@@ -123,8 +123,12 @@ The Disaster Alleviation Foundation platform is a full-featured web application 
 
 ### **1. Clone the Repository**
 ```bash
-git clone https://dev.azure.com/ST10304249/Gift_Of_The_Givers_Foundation/_git/Gift_Of_The_Givers_Foundation
-cd DisasterAlleviationFoundation
+Azure Repos
+ https://dev.azure.com/ST10304249/Gift_Of_The_Givers_Foundation/_git/Gift_Of_The_Givers_Foundation
+
+Github
+https://github.com/Philadelphia01/GiftOfTheGivers_Part2-Poe_ST10304249.git
+
 ```
 
 ### **2. Configure Database Connection**
@@ -133,29 +137,6 @@ Update `appsettings.json` with your Azure SQL Database connection:
 {
   "ConnectionStrings": {
     "DefaultConnection": "Server=tcp:your-server.database.windows.net,1433;Initial Catalog=DisasterAlleviationDb;Persist Security Info=False;User ID=your-username;Password=your-password;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
-  }
-}
-```
-
-**For Local Development (Optional):**
-```json
-{
-  "ConnectionStrings": {
-    "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=DisasterAlleviationDb;Trusted_Connection=True;MultipleActiveResultSets=true"
-  }
-}
-```
-
-### **3. Configure Azure AD (Optional)**
-Update `appsettings.json` for Azure AD integration:
-```json
-{
-  "AzureAd": {
-    "Instance": "https://login.microsoftonline.com/",
-    "Domain": "yourtenant.onmicrosoft.com",
-    "TenantId": "your-tenant-id-guid",
-    "ClientId": "your-client-id-guid",
-    "CallbackPath": "/signin-oidc"
   }
 }
 ```
@@ -250,12 +231,7 @@ dotnet DisasterAlleviationFoundation.dll
    - Click "Login" in the top navigation
    - Enter your email and password
    - Click "Log in"
-4. **Regular User Features**:
-   - Create and manage your own donations
-   - Submit and view your disaster reports
-   - Manage your assigned volunteer tasks
-   - Send messages to other volunteers
-   - **Data Isolation**: You can only see and manage your own data
+
 
 ### **🧪 Testing User Isolation**
 1. **Create Multiple Test Accounts**:
@@ -314,6 +290,11 @@ The Azure DevOps pipeline encountered several common issues that are typical in 
 - ✅ Deployment simulation
 - ✅ Artifact publishing
 - ✅ Build status reporting
+ 
+   **Sample Test User Details**:
+   - **Full Name**: Test User
+   - **Email**: testuser@gmail.com
+   - **Password**: 123456
 
 ### **🎯 Login Troubleshooting**
 - **Forgot Admin Password**: The admin password is `Admin123!` (case-sensitive)
@@ -327,17 +308,7 @@ A default admin account is automatically created when you first run the applicat
 - **Password**: `Admin123!`
 - **Role**: Administrator with full system access
 
-**Admin Features:**
-- **Modern Admin Dashboard** - Analytics-style interface with statistics and recent activity
-- **Direct Dashboard Access** - Admins are automatically redirected to the dashboard upon login
-- **View All Data** - Access to all donations, disaster reports, and volunteer tasks from all users
-- **Inventory Management** - Real-time inventory tracking and distribution management
-- **User Management** - Oversee volunteer coordination and task assignments
-- **System Analytics** - Dashboard with key metrics and performance indicators
-- **Quick Actions** - Dedicated buttons for "View Incidents", "View Donations", and "Manage Volunteers"
-- **Website Access** - "View Website" button to access the main public site when needed
 
----
 
 ## 🔒 **Security Features**
 
@@ -359,29 +330,6 @@ A default admin account is automatically created when you first run the applicat
 
 ## 🧪 **Testing & Quality Assurance**
 
-### **Manual Testing Checklist**
-- [ ] User registration and login
-- [ ] Data isolation between users
-- [ ] CRUD operations for all entities
-- [ ] Admin functionality (if applicable)
-- [ ] Responsive design on different devices
-- [ ] Security: unauthorized access attempts
-
-### **Database Testing**
-```bash
-# Reset database for fresh testing
-dotnet ef database drop --force
-dotnet ef database update
-```
-
-### **Security Testing**
-- Test user isolation by attempting to access other users' data
-- Verify authentication requirements on all protected pages
-- Test authorization for admin-only features
-
----
-
-## 🐛 **Troubleshooting**
 
 ### **Common Issues**
 
@@ -408,12 +356,6 @@ dotnet ef database update
 dotnet run --urls http://localhost:5183
 ```
 
-#### **Authentication Issues**
-- Verify Azure AD configuration
-- Check callback URLs
-- Ensure proper permissions
-
----
 
 ## 📚 **Additional Resources**
 
@@ -423,12 +365,6 @@ dotnet run --urls http://localhost:5183
 - [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
 - [Bootstrap Documentation](https://getbootstrap.com/docs/)
 
-### **Learning Resources**
-- [Microsoft Learn - ASP.NET Core](https://docs.microsoft.com/learn/paths/aspnet-core-web-app/)
-- [Entity Framework Core Tutorial](https://www.entityframeworktutorial.net/efcore/entity-framework-core.aspx)
-- [Azure Documentation](https://docs.microsoft.com/azure/)
-
----
 
 ## 📞 **Support & Contact**
 
@@ -469,5 +405,4 @@ For technical support or questions about this application:
 
 ---
 
-*Built with ❤️ for disaster relief and community support*
 
