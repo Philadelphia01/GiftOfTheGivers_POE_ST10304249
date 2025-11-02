@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DisasterAlleviationFoundation")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2b2810609fe1ebc8d3aec5abc2b2a5b6306a37b0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c9829ab3394d38a3d5971df45284ec947da02e27")]
 [assembly: System.Reflection.AssemblyProductAttribute("DisasterAlleviationFoundation")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DisasterAlleviationFoundation")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

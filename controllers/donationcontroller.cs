@@ -16,32 +16,47 @@ namespace DisasterAlleviationFoundation.Controllers
         }
 
         // GET: Donation
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchResourceType)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            
+
             if (string.IsNullOrEmpty(userId))
             {
                 // User not logged in - redirect to login
-                TempData["ErrorMessage"] = "You must be logged in to view donations.";
+                if (TempData != null) TempData["ErrorMessage"] = "You must be logged in to view donations.";
                 return RedirectToAction("SignIn", "Account");
             }
-            
+
             // Show all donations for admin users, or only user's donations for regular users
             var isAdmin = User.IsInRole("Admin") || User.IsInRole("Administrator");
-            var donations = isAdmin 
-                ? await _context.Donations
+            IQueryable<Donation> donationsQuery;
+            if (isAdmin)
+            {
+                donationsQuery = _context.Donations
                     .Include(d => d.DonorUser)
-                    .Include(d => d.DistributedByUser)
-                    .OrderByDescending(d => d.DateDonated)
-                    .ToListAsync()
-                : await _context.Donations
+                    .Include(d => d.DistributedByUser);
+            }
+            else
+            {
+                donationsQuery = _context.Donations
                     .Where(d => d.DonorUserId == userId)
                     .Include(d => d.DonorUser)
-                    .Include(d => d.DistributedByUser)
-                    .OrderByDescending(d => d.DateDonated)
-                    .ToListAsync();
-                
+                    .Include(d => d.DistributedByUser);
+            }
+
+            // Apply search filter if searchResourceType is provided
+            if (!string.IsNullOrEmpty(searchResourceType))
+            {
+                donationsQuery = donationsQuery.Where(d => d.ResourceType.Contains(searchResourceType, StringComparison.OrdinalIgnoreCase));
+            }
+
+            var donations = await donationsQuery
+                .OrderByDescending(d => d.DateDonated)
+                .ToListAsync();
+
+            // Pass the search parameter to the view
+            ViewBag.SearchResourceType = searchResourceType;
+
             return View(donations);
         }
 
@@ -69,6 +84,12 @@ namespace DisasterAlleviationFoundation.Controllers
             {
                 TempData["ErrorMessage"] = "You can only view your own donations.";
                 return RedirectToAction(nameof(Index));
+            }
+
+            // Ensure DonorUser is loaded
+            if (donation.DonorUser == null && !string.IsNullOrEmpty(donation.DonorUserId))
+            {
+                donation.DonorUser = await _context.Users.FirstOrDefaultAsync(u => u.Id == donation.DonorUserId);
             }
 
             return View(donation);
@@ -115,7 +136,6 @@ namespace DisasterAlleviationFoundation.Controllers
 
         // POST: Donation/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Donation donation)
         {
             if (ModelState.IsValid)
@@ -246,10 +266,13 @@ namespace DisasterAlleviationFoundation.Controllers
             if (donation == null)
                 return NotFound();
 
+            if (donation.Status != "Pending")
+                return NotFound();
+
             // Check if user is admin or the donor
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var isAdmin = User.IsInRole("Admin") || User.IsInRole("Administrator");
-            
+
             if (!isAdmin && userId != donation.DonorUserId)
                 return Forbid();
 
@@ -259,39 +282,34 @@ namespace DisasterAlleviationFoundation.Controllers
         // POST: Donation/Distribute/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Distribute(int id, [Bind("Id,Status,Location,DistributionNotes")] Donation donation)
+        public async Task<IActionResult> Distribute(int id, string status, string location, string distributionNotes)
         {
-            if (id != donation.Id)
-                return NotFound();
-
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var isAdmin = User.IsInRole("Admin") || User.IsInRole("Administrator");
 
             if (!isAdmin)
             {
-                TempData["ErrorMessage"] = "Only administrators can distribute donations.";
-                return RedirectToAction(nameof(Index));
+                return Forbid();
             }
+
+            var existingDonation = await _context.Donations.FindAsync(id);
+            if (existingDonation == null)
+                return NotFound();
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var existingDonation = await _context.Donations.FindAsync(id);
-                    if (existingDonation == null)
-                        return NotFound();
+                    existingDonation.Status = status;
+                    existingDonation.Location = location;
+                    existingDonation.DistributionNotes = distributionNotes;
 
-                    existingDonation.Status = donation.Status;
-                    existingDonation.Location = donation.Location;
-                    existingDonation.DistributionNotes = donation.DistributionNotes;
-                    
-                    if (donation.Status == "Distributed")
+                    if (status == "Distributed")
                     {
                         existingDonation.DateDistributed = DateTime.Now;
                         existingDonation.DistributedByUserId = userId;
                     }
 
-                    _context.Update(existingDonation);
                     await _context.SaveChangesAsync();
 
                     TempData["SuccessMessage"] = "Donation status updated successfully!";
@@ -299,14 +317,14 @@ namespace DisasterAlleviationFoundation.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!_context.Donations.Any(d => d.Id == donation.Id))
+                    if (!_context.Donations.Any(d => d.Id == id))
                         return NotFound();
                     else
                         throw;
                 }
             }
 
-            return View(donation);
+            return View(existingDonation);
         }
 
         // GET: Donation/Inventory - View donation inventory
