@@ -28,14 +28,12 @@ namespace DisasterAlleviationFoundation.Controllers
 
             // Show all reports for admin users, or only user's reports for regular users
             var isAdmin = User.IsInRole("Admin") || User.IsInRole("Administrator");
-            var reports = isAdmin 
+            var reports = isAdmin
                 ? await _context.DisasterReports
-                    .Include(r => r.ReportedByUser)
                     .OrderByDescending(r => r.DateReported)
                     .ToListAsync()
                 : await _context.DisasterReports
                     .Where(r => r.ReportedByUserId == userId)
-                    .Include(r => r.ReportedByUser)
                     .OrderByDescending(r => r.DateReported)
                     .ToListAsync();
                     
