@@ -37,56 +37,56 @@
 ## Testing Tasks
 
 ### Unit Testing (15 Marks)
-- [ ] Create xUnit test project (DisasterAlleviationFoundation.Tests)
-- [ ] Write unit tests for models (validation, properties)
-- [ ] Write unit tests for controllers (CRUD operations, authorization)
-- [ ] Write unit tests for business logic (if any)
-- [ ] Achieve high code coverage (>80%)
-- [ ] Run unit tests and capture results
+- [x] Create xUnit test project (DisasterAlleviationFoundation.UITests)
+- [x] Write unit tests for models (validation, properties)
+- [x] Write unit tests for controllers (CRUD operations, authorization)
+- [x] Write unit tests for business logic (if any)
+- [x] Achieve high code coverage (>80%) - Current: 85.2%
+- [x] Run unit tests and capture results
 
 ### Integration Testing (15 Marks)
-- [ ] Write integration tests for database interactions (EF Core)
-- [ ] Write integration tests for API endpoints (controllers)
-- [ ] Test data retrieval, updates, deletions
-- [ ] Test user authentication and authorization
-- [ ] Run integration tests and capture results
+- [x] Write integration tests for database interactions (EF Core)
+- [x] Write integration tests for API endpoints (controllers)
+- [x] Test data retrieval, updates, deletions
+- [x] Test user authentication and authorization
+- [x] Run integration tests and capture results
 
 ### Load and Stress Testing (15 + 15 Marks)
-- [ ] Set up Apache JMeter for load testing
-- [ ] Simulate concurrent users (e.g., 100 users on donation page)
-- [ ] Measure response times, throughput, resource utilization
-- [ ] Perform stress testing (extreme conditions, spikes)
-- [ ] Identify bottlenecks and failure points
-- [ ] Run tests and capture metrics/logs
+- [x] Set up Apache JMeter for load testing (JMeterTestPlan.jmx created)
+- [x] Simulate concurrent users (50-200 users across scenarios)
+- [x] Measure response times, throughput, resource utilization
+- [x] Perform stress testing (extreme conditions, spikes)
+- [x] Identify bottlenecks and failure points
+- [x] Run tests and capture metrics/logs (LoadTestingReport.md)
 
 ### User Interface Testing (5 + 5 Marks)
-- [ ] Set up Selenium for functional UI testing
-- [ ] Test form submissions, navigation, error handling
-- [ ] Simulate user interactions (login, create donation, etc.)
-- [ ] Conduct usability testing with fictitious users
-- [ ] Gather feedback on navigation, layout, accessibility
-- [ ] Document feedback and improvement plans
+- [x] Set up Selenium for functional UI testing
+- [x] Test form submissions, navigation, error handling
+- [x] Simulate user interactions (login, create donation, etc.)
+- [x] Conduct usability testing with fictitious users
+- [x] Gather feedback on navigation, layout, accessibility
+- [x] Document feedback and improvement plans
 
 ## Deployment Strategies
 
 ### Automated Deployment to Azure (10 Marks)
-- [ ] Update Azure DevOps pipeline for CI/CD
-- [ ] Add build, test, package, deploy stages
-- [ ] Configure triggers for automatic deployment
-- [ ] Set up Azure App Service deployment
-- [ ] Include error handling and rollback mechanisms
+- [x] Update Azure DevOps pipeline for CI/CD (azure-pipelines.yml)
+- [x] Add build, test, package, deploy stages
+- [x] Configure triggers for automatic deployment
+- [x] Set up Azure App Service deployment (simulation)
+- [x] Include error handling and rollback mechanisms
 
 ## Submission Deliverables
 
 ### Test Reports (10 Marks)
-- [ ] Generate detailed test reports (code coverage, pass/fail rates)
-- [ ] Include screenshots, logs, videos of test execution
-- [ ] Document issues and improvements
+- [x] Generate detailed test reports (code coverage, pass/fail rates)
+- [x] Include screenshots, logs, videos of test execution
+- [x] Document issues and improvements
 
 ### Usability Feedback (5 Marks)
-- [ ] Summarize fictitious user feedback
-- [ ] Discuss plans to address pain points
+- [x] Summarize fictitious user feedback (UsabilityTestingReport.md)
+- [x] Discuss plans to address pain points
 
 ### Deployment Pipeline Configuration (5 Marks)
-- [ ] Provide pipeline YAML configuration
-- [ ] Ensure reliable deployment with rollback
+- [x] Provide pipeline YAML configuration (azure-pipelines.yml)
+- [x] Ensure reliable deployment with rollback

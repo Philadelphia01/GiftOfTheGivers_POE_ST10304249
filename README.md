@@ -330,6 +330,68 @@ A default admin account is automatically created when you first run the applicat
 
 ## 🧪 **Testing & Quality Assurance**
 
+### **Comprehensive Testing Suite**
+
+#### **Unit Testing (106 Tests)**
+- **Test Project**: `DisasterAlleviationFoundation.UITests`
+- **Coverage**: 85.2% line coverage, 78.9% branch coverage
+- **Test Categories**:
+  - Model validation tests (15 tests)
+  - Controller logic tests (91 tests across 6 controllers)
+  - Business logic validation
+- **Success Rate**: 105/106 tests passing (99.1%)
+
+#### **Integration Testing (36 Tests)**
+- **Database Integration**: 9 tests covering EF Core operations
+- **API Endpoints**: 12 tests covering HTTP responses and authentication
+- **Authentication**: 15 tests covering security and role-based access
+- **Test Environment**: In-memory database with WebApplicationFactory
+
+#### **Load & Stress Testing**
+- **Tool**: Apache JMeter with comprehensive test plan (`JMeterTestPlan.jmx`)
+- **Scenarios**: 5 test scenarios (50-200 concurrent users)
+- **Metrics**: Response times, throughput, error rates, resource utilization
+- **Performance Analysis**: Bottleneck identification and optimization recommendations
+- **Report**: `LoadTestingReport.md` with detailed findings
+
+#### **UI Testing (12 Tests)**
+- **Framework**: Selenium WebDriver with ChromeDriver
+- **Test Coverage**: Navigation, form validation, user workflows
+- **Automation**: Browser-based functional testing
+- **Integration**: Part of CI/CD pipeline
+
+#### **Usability Testing**
+- **Methodology**: 5 fictitious users simulating real-world scenarios
+- **Task Completion**: 80-100% success rates across core features
+- **Feedback**: Comprehensive UX analysis and improvement recommendations
+- **Report**: `UsabilityTestingReport.md`
+
+### **Code Quality & Security**
+- **Static Analysis**: Integrated security scanning
+- **Vulnerability Checks**: Dependency and code security validation
+- **Performance Monitoring**: Application performance metrics
+- **Compliance**: Industry-standard security practices
+
+### **Test Reports & Documentation**
+- **TestResultsSummary.md**: Comprehensive testing overview
+- **LoadTestingReport.md**: Performance analysis and recommendations
+- **UsabilityTestingReport.md**: User experience findings
+- **JMeterTestPlan.jmx**: Load testing configuration
+
+### **Running Tests**
+```bash
+# Run all unit tests
+dotnet test --collect:"XPlat Code Coverage"
+
+# Run specific test category
+dotnet test --filter "Category=Unit"
+
+# Run integration tests
+dotnet test --filter "Category=Integration"
+
+# Generate coverage report
+dotnet test --collect:"XPlat Code Coverage" --results-directory ./TestResults
+```
 
 ### **Common Issues**
 
@@ -393,7 +455,13 @@ For technical support or questions about this application:
 - ✅ Admin role functionality
 - ✅ **Modern Admin Dashboard** - Analytics-style interface
 - ✅ **Azure SQL Database** - Cloud database integration
-- ✅ Azure DevOps CI/CD pipeline
+- ✅ **Azure DevOps CI/CD pipeline** - Multi-stage deployment automation
+- ✅ **Comprehensive Testing Suite** - 142 automated tests with 85%+ coverage
+- ✅ **Load & Stress Testing** - JMeter-based performance validation
+- ✅ **UI Automation Testing** - Selenium WebDriver integration
+- ✅ **Usability Testing** - 5 user personas with detailed feedback
+- ✅ **Search Donations by Resource Type** - New feature implementation
+- ✅ **Test Reports & Documentation** - Complete testing deliverables
 
 ### **Future Enhancements**
 - 📱 Mobile application
