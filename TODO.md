@@ -25,14 +25,14 @@
 - [x] Write integration tests for API endpoints - ApiEndpointIntegrationTests.cs created with 8 tests
 - [x] Test user authentication and authorization - AuthenticationIntegrationTests.cs created with 8 tests
 - [x] Run integration tests and capture results - Integration tests executed successfully
-- [ ] Set up Apache JMeter for load testing
-- [ ] Perform load and stress testing
-- [ ] Set up Selenium for UI testing
-- [ ] Conduct usability testing
-- [ ] Update Azure DevOps pipeline for CI/CD
-- [ ] Generate test reports with code coverage
-- [ ] Document usability feedback
-- [ ] Provide deployment pipeline YAML configuration
+- [x] Set up Apache JMeter for load testing
+- [x] Perform load and stress testing
+- [x] Set up Selenium for UI testing
+- [x] Conduct usability testing
+- [x] Update Azure DevOps pipeline for CI/CD
+- [x] Generate test reports with code coverage
+- [x] Document usability feedback
+- [x] Provide deployment pipeline YAML configuration
 
 ## Testing Tasks
 

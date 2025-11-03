@@ -6,8 +6,6 @@ using Microsoft.Identity.Web;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 
-public partial class Program { }
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
